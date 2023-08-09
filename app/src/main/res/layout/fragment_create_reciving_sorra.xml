@@ -71,7 +71,6 @@
                     tools:text="25/11/2023" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/dateFieldStateTv"
                     style="@style/medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -126,7 +125,6 @@
                     app:layout_constraintTop_toTopOf="@id/studentCodeIconIv" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/student_field_stateTv"
                     style="@style/medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -205,6 +203,19 @@
                     app:layout_constraintTop_toTopOf="@id/studentIconIv" />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:gravity="bottom"
+                    android:text="@string/required"
+                    android:textColor="@color/violetBtnColors"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/studentFieldTv"
+                    app:layout_constraintStart_toEndOf="@id/studentFieldTv"
+                    app:layout_constraintTop_toTopOf="@id/studentFieldTv" />
+
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/studentValue_ed"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -264,6 +275,19 @@
                     app:layout_constraintStart_toEndOf="@id/sheikhIconIv"
                     app:layout_constraintTop_toTopOf="@id/sheikhIconIv" />
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:gravity="bottom"
+                    android:text="@string/required"
+                    android:textColor="@color/violetBtnColors"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/sheikhFieldTv"
+                    app:layout_constraintStart_toEndOf="@id/sheikhFieldTv"
+                    app:layout_constraintTop_toTopOf="@id/sheikhFieldTv" />
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/sheikhValue_ed"
                     android:layout_width="wrap_content"
@@ -285,7 +309,7 @@
                     android:layout_marginTop="@dimen/_12sdp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="6dp"
-                    android:background="@drawable/bg_assignees_40radious"
+                    android:background="@drawable/bg_person_40radious"
                     android:paddingHorizontal="16dp"
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -297,9 +321,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/gray_oval"
-                        android:backgroundTint="@color/violetBtnColors"
+                        android:backgroundTint="@color/white"
                         android:padding="4dp"
-                        android:src="@drawable/ic_profile"
+                        android:src="@drawable/ic_profile_gray"
                         android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -357,6 +381,20 @@
                     app:layout_constraintBottom_toBottomOf="@id/ringIconIv"
                     app:layout_constraintStart_toEndOf="@id/ringIconIv"
                     app:layout_constraintTop_toTopOf="@id/ringIconIv" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:gravity="bottom"
+                    android:text="@string/required"
+                    android:textColor="@color/violetBtnColors"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/ringFieldTv"
+                    app:layout_constraintStart_toEndOf="@id/ringFieldTv"
+                    app:layout_constraintTop_toTopOf="@id/ringFieldTv" />
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/ringValue_ed"
@@ -416,6 +454,20 @@
                     app:layout_constraintStart_toEndOf="@id/soraIconIv"
                     app:layout_constraintTop_toTopOf="@id/soraIconIv" />
 
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:gravity="bottom"
+                    android:text="@string/required"
+                    android:textColor="@color/violetBtnColors"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/soraFieldTv"
+                    app:layout_constraintStart_toEndOf="@id/soraFieldTv"
+                    app:layout_constraintTop_toTopOf="@id/soraFieldTv" />
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/soraValue_ed"
                     android:layout_width="wrap_content"
@@ -437,7 +489,7 @@
                     android:layout_marginTop="@dimen/_12sdp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="6dp"
-                    android:background="@drawable/bg_assignees_40radious"
+                    android:background="@drawable/bg_person_40radious"
                     android:paddingHorizontal="16dp"
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -449,7 +501,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/gray_oval"
-                        android:backgroundTint="@color/violetBtnColors"
+                        android:backgroundTint="@color/white"
                         android:padding="4dp"
                         android:src="@drawable/ic_book"
                         android:visibility="gone"
@@ -510,10 +562,25 @@
                     app:layout_constraintStart_toEndOf="@id/studentPassedStateIconIv"
                     app:layout_constraintTop_toTopOf="@id/studentPassedStateIconIv" />
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:gravity="bottom"
+                    android:text="@string/required"
+                    android:textColor="@color/violetBtnColors"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/studentPassedStateFieldTv"
+                    app:layout_constraintStart_toEndOf="@id/studentPassedStateFieldTv"
+                    app:layout_constraintTop_toTopOf="@id/studentPassedStateFieldTv" />
+
+
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/studentPassedStateValue_ed"
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="0dp"
+                    android:editable="false"
                     android:layout_marginTop="6dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="6dp"
@@ -541,6 +608,18 @@
                     app:layout_constraintStart_toEndOf="@id/studentPassedStateFieldTv"
                     app:layout_constraintTop_toTopOf="@id/studentPassedStateFieldTv" />
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:gravity="bottom"
+                    android:text="@string/required"
+                    android:textColor="@color/violetBtnColors"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/studentPassedDegreeFieldTv"
+                    app:layout_constraintStart_toEndOf="@id/studentPassedDegreeFieldTv"
+                    app:layout_constraintTop_toTopOf="@id/studentPassedDegreeFieldTv" />
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/studentPassedDegreeValue_ed"
                     android:layout_width="0dp"

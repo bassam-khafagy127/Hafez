@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bassamkhafagy.hafez.data.local.Sheikh
 import com.bassamkhafagy.hafez.repositories.HafezRepository
 import com.bassamkhafagy.hafez.util.Resource
 import com.bassamkhafagy.hafez.util.getSystemDate
@@ -17,10 +18,34 @@ import javax.inject.Inject
 @HiltViewModel
 class HafezViewModel @Inject constructor(private val repository: HafezRepository) : ViewModel() {
 
+    private val _sheikhLiveDate = MutableLiveData<String>()
+    val sheikhLiveDate: LiveData<String> = _sheikhLiveDate
 
+    private val _surahLiveDate = MutableLiveData<String>()
+    val surahLiveDate: LiveData<String> = _surahLiveDate
+
+    private val _stateLiveDate = MutableLiveData<String>()
+    val stateLiveDate: LiveData<String> = _stateLiveDate
+
+
+    fun setSheikhName(sheikh: String) {
+        viewModelScope.launch {
+            _sheikhLiveDate.value = sheikh
+        }
+    }
+
+    fun setSurahName(surah: String) {
+        viewModelScope.launch {
+            _surahLiveDate.value = surah
+        }
+    }
+
+    fun setStateValue(state: String) {
+        viewModelScope.launch {
+            _stateLiveDate.value = state
+        }
+    }
 }
-
-
 
 
 //    private val _taskLiveDate = MutableLiveData<Task>()
@@ -33,7 +58,7 @@ class HafezViewModel @Inject constructor(private val repository: HafezRepository
 //    private val _insertionState =
 //        MutableSharedFlow<Resource<String>>()
 //    val insertionState = _insertionState.asSharedFlow()
-//
+
 //    private val _priorityLiveDate =
 //        MutableSharedFlow<String>()
 //    val priorityLiveDate = _priorityLiveDate.asSharedFlow()

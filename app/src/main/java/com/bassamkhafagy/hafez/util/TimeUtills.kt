@@ -7,7 +7,7 @@ import java.util.Locale
 fun getSystemDate(): String {
     val currentDate = Calendar.getInstance().time
     val dateFormat =
-        SimpleDateFormat("yyyy, MMMM d", Locale.ENGLISH)
+        SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
     return dateFormat.format(
         currentDate
     )
