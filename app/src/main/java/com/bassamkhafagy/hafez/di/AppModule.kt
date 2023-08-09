@@ -1,7 +1,7 @@
 package com.bassamkhafagy.hafez.di
 
-import com.bassamkhafagy.hafez.data.database.TaskedInAppDataBase
-import com.bassamkhafagy.hafez.repositories.TasksRepository
+import com.bassamkhafagy.hafez.data.database.HafezAppDataBase
+import com.bassamkhafagy.hafez.repositories.HafezRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,11 +14,11 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideTasksRepository(
-        taskedInAppDataBase: TaskedInAppDataBase
-    ): TasksRepository {
-        return TasksRepository(
-            taskedInAppDataBase
+    fun provideHafezRepository(
+        hafezAppDataBase: HafezAppDataBase
+    ): HafezRepository {
+        return HafezRepository(
+            hafezAppDataBase
         )
     }
 

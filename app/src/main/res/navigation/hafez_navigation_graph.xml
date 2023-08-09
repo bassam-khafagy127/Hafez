@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/task_navigation_graph"
+    app:startDestination="@id/createSoraCompleteFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.bassamkhafagy.hafez.fragments.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_showStudentsByCodeFragment"
+            app:destination="@id/showStudentsByCodeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_createSoraCompleteFragment"
+            app:destination="@id/createSoraCompleteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createSoraCompleteFragment"
+        android:name="com.bassamkhafagy.hafez.fragments.CreateSoraCompleteFragment"
+        android:label="CreateSoraCompleteFragment"
+        tools:layout="@layout/fragment_create_reciving_sorra" />
+    <fragment
+        android:id="@+id/showStudentsByCodeFragment"
+        android:name="com.bassamkhafagy.hafez.fragments.ShowStudentsByCodeFragment"
+        android:label="ShowStudentsByCodeFragment"
+        tools:layout="@layout/fragment_show_student_bycode" />
+</navigation>

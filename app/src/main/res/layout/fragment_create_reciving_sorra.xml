@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/generalWhiteBG">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginBottom="14dp"
+                android:background="@color/hintTextColor" />
+
+            <!-- date-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/dateIconIv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="2dp"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_calender"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/dateFieldTv"
+                    style="@style/regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:text="@string/date"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@id/dateIconIv"
+                    app:layout_constraintStart_toEndOf="@id/dateIconIv"
+                    app:layout_constraintTop_toTopOf="@id/dateIconIv" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/dateFieldShowTv"
+                    style="@style/regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="6dp"
+                    android:gravity="center"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/dateFieldTv"
+                    app:layout_constraintTop_toBottomOf="@id/dateFieldTv"
+                    tools:text="25/11/2023" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/dateFieldStateTv"
+                    style="@style/medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:gravity="bottom"
+                    android:text="@string/required"
+                    android:textColor="@color/violetBtnColors"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/dateFieldTv"
+                    app:layout_constraintStart_toEndOf="@id/dateFieldTv"
+                    app:layout_constraintTop_toTopOf="@id/dateFieldTv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="14dp"
+                android:background="@color/hintTextColor" />
+
+
+            <!-- studentCode-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/studentCodeIconIv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="2dp"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_two_persons"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/studentCodeTv"
+                    style="@style/regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center"
+                    android:text="@string/student_code"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@id/studentCodeIconIv"
+                    app:layout_constraintStart_toEndOf="@id/studentCodeIconIv"
+                    app:layout_constraintTop_toTopOf="@id/studentCodeIconIv" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/student_field_stateTv"
+                    style="@style/medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:gravity="bottom"
+                    android:text="@string/required"
+                    android:textColor="@color/violetBtnColors"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@id/studentCodeValue_ed"
+                    app:layout_constraintStart_toEndOf="@id/studentCodeTv"
+                    app:layout_constraintTop_toTopOf="@id/studentCodeTv" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/studentCodeValue_ed"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/transparent"
+                    android:hint="@string/student_code"
+                    android:inputType="number"
+                    android:textColor="@color/hintTextColor"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/studentCodeSearch_iv"
+                    app:layout_constraintStart_toStartOf="@id/studentCodeTv"
+                    app:layout_constraintTop_toBottomOf="@id/studentCodeTv" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/studentCodeSearch_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:src="@drawable/ic_search"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="2dp"
+                android:background="@color/hintTextColor" />
+
+            <!-- StudentName-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/studentIconIv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="2dp"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_two_persons"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/studentFieldTv"
+                    style="@style/regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center"
+                    android:text="@string/studentName"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@id/studentIconIv"
+                    app:layout_constraintStart_toEndOf="@id/studentIconIv"
+                    app:layout_constraintTop_toTopOf="@id/studentIconIv" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/studentValue_ed"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/transparent"
+                    android:hint="@string/studentName"
+                    android:textColor="@color/hintTextColor"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/studentFieldTv"
+                    app:layout_constraintTop_toBottomOf="@id/studentFieldTv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/hintTextColor" />
+
+            <!-- sheikh-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/sheikhCl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/sheikhIconIv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/gray_oval"
+                    android:backgroundTint="@color/violetBtnColors"
+                    android:padding="4dp"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_profile"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/sheikhFieldTv"
+                    style="@style/regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:text="@string/shiekh"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@id/sheikhIconIv"
+                    app:layout_constraintStart_toEndOf="@id/sheikhIconIv"
+                    app:layout_constraintTop_toTopOf="@id/sheikhIconIv" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/sheikhValue_ed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/transparent"
+                    android:hint="@string/shiekh"
+                    android:src="@drawable/ic_add_person"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/sheikhFieldTv"
+                    app:layout_constraintTop_toBottomOf="@id/sheikhFieldTv" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/sheikh_cl_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@drawable/bg_assignees_40radious"
+                    android:paddingHorizontal="16dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/sheikhFieldTv"
+                    app:layout_constraintTop_toBottomOf="@id/sheikhFieldTv">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/sheikh_iv_user"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/gray_oval"
+                        android:backgroundTint="@color/violetBtnColors"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_profile"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/sheikh_tv_user"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:maxLength="65"
+                        android:textColor="@color/gray"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@id/sheikh_iv_user"
+                        app:layout_constraintStart_toEndOf="@id/sheikh_iv_user"
+                        app:layout_constraintTop_toTopOf="@id/sheikh_iv_user"
+                        tools:text="Ola ahmed zahe" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="4dp"
+                android:background="@color/hintTextColor" />
+
+            <!-- ring -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ringIconIv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="6dp"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_two_persons"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/ringFieldTv"
+                    style="@style/regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center"
+                    android:text="@string/ring"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@id/ringIconIv"
+                    app:layout_constraintStart_toEndOf="@id/ringIconIv"
+                    app:layout_constraintTop_toTopOf="@id/ringIconIv" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/ringValue_ed"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/transparent"
+                    android:hint="@string/ring"
+                    android:textColor="@color/hintTextColor"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/ringFieldTv"
+                    app:layout_constraintTop_toBottomOf="@id/ringFieldTv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/hintTextColor" />
+
+            <!-- sora-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/soraCl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/soraIconIv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="20dp"
+                    android:padding="4dp"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_book"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/soraFieldTv"
+                    style="@style/regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:text="@string/sora"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@id/soraIconIv"
+                    app:layout_constraintStart_toEndOf="@id/soraIconIv"
+                    app:layout_constraintTop_toTopOf="@id/soraIconIv" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/soraValue_ed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/transparent"
+                    android:hint="@string/sora"
+                    android:src="@drawable/ic_add_person"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/soraFieldTv"
+                    app:layout_constraintTop_toBottomOf="@id/soraFieldTv" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/sora_cl_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@drawable/bg_assignees_40radious"
+                    android:paddingHorizontal="16dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/soraFieldTv"
+                    app:layout_constraintTop_toBottomOf="@id/soraFieldTv">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/sora_iv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/gray_oval"
+                        android:backgroundTint="@color/violetBtnColors"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_book"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/sora_tv_user"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:maxLength="65"
+                        android:textColor="@color/gray"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@id/sora_iv_title"
+                        app:layout_constraintStart_toEndOf="@id/sora_iv_title"
+                        app:layout_constraintTop_toTopOf="@id/sora_iv_title"
+                        tools:text="Ola ahmed zahe" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="2dp"
+                android:background="@color/hintTextColor" />
+
+            <!-- passedState-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/studentPassedStateIconIv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="2dp"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_two_persons"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/studentPassedStateFieldTv"
+                    style="@style/regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center"
+                    android:text="@string/passedState"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@id/studentPassedStateIconIv"
+                    app:layout_constraintStart_toEndOf="@id/studentPassedStateIconIv"
+                    app:layout_constraintTop_toTopOf="@id/studentPassedStateIconIv" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/studentPassedStateValue_ed"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/transparent"
+                    android:hint="@string/passedState"
+                    android:textColor="@color/hintTextColor"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/studentPassedDegreeFieldTv"
+                    app:layout_constraintStart_toStartOf="@id/studentPassedStateFieldTv"
+                    app:layout_constraintTop_toBottomOf="@id/studentPassedStateFieldTv" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/studentPassedDegreeFieldTv"
+                    style="@style/regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center"
+                    android:text="@string/degree"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@id/studentPassedStateFieldTv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/studentPassedStateFieldTv"
+                    app:layout_constraintTop_toTopOf="@id/studentPassedStateFieldTv" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/studentPassedDegreeValue_ed"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/transparent"
+                    android:hint="@string/degree"
+                    android:inputType="number"
+                    android:textColor="@color/hintTextColor"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/studentPassedDegreeFieldTv"
+                    app:layout_constraintTop_toTopOf="@id/studentPassedStateValue_ed" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/lastSplit"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="16dp"
+                android:background="@color/hintTextColor" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/save_btn"
+                style="@style/blueButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="@dimen/_25sdp"
+                android:layout_marginBottom="40dp"
+                android:text="@string/create_revision" />
+        </LinearLayout>
+    </ScrollView>
+</layout>

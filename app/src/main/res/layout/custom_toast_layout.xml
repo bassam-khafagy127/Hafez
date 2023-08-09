@@ -27,7 +27,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:text="@string/task_inserted_successfully"
+        android:text="@string/sora_inserted_successfully"
         android:textColor="@color/hintTextColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
