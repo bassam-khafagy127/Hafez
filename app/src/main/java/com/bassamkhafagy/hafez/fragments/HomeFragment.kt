@@ -9,6 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
 import com.bassamkhafagy.hafez.R
 import com.bassamkhafagy.hafez.data.local.Students
 import com.bassamkhafagy.hafez.databinding.FragmentHomeBinding
@@ -65,16 +66,26 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpCallBacks()
+        setUpCallBacks(view)
     }
 
-    private fun setUpCallBacks() {
+    private fun setUpCallBacks(view: View) {
         binding.apply {
             importStudentExcel.setOnClickListener {
                 selectExcelFile(studentFilePickerContract)
             }
             importSheikhExcel.setOnClickListener {
                 selectExcelFile(sheikhFilePickerContract)
+            }
+            createReview.setOnClickListener {
+                val action =
+                    HomeFragmentDirections.actionHomeFragmentToCreateSoraCompleteFragment()
+                Navigation.findNavController(view).navigate(action)
+            }
+            studentQueryByCode.setOnClickListener {
+                val action =
+                    HomeFragmentDirections.actionHomeFragmentToShowStudentsByCodeFragment()
+                Navigation.findNavController(view).navigate(action)
             }
         }
     }

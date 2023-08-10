@@ -11,7 +11,7 @@ class HafezRepository @Inject constructor(private val hafezAppDataBase: HafezApp
 
 
     //SoraComplete
-    suspend fun insertSora(reviewComplete: ReviewComplete) =
+    suspend fun insertSoraReview(reviewComplete: ReviewComplete) =
         hafezAppDataBase.soraDao().insertSoraReview(reviewComplete)
 
     suspend fun getAllSorReview() = hafezAppDataBase.soraDao().getAllSorReview()
@@ -25,6 +25,8 @@ class HafezRepository @Inject constructor(private val hafezAppDataBase: HafezApp
     }
 
     suspend fun getAllStudents() = hafezAppDataBase.studentsDao().getAllStudents()
+    suspend fun clearAllStudents() = hafezAppDataBase.studentsDao().clearTable()
+
     fun getStudentById(id: Long) = hafezAppDataBase.studentsDao().getStudentById(id)
 
     ///Sheikh
@@ -36,4 +38,5 @@ class HafezRepository @Inject constructor(private val hafezAppDataBase: HafezApp
 
     suspend fun getAllShuyukh() = hafezAppDataBase.shuyukhDao().getAllShuyukh()
 
+    suspend fun clearAllShuyukh() = hafezAppDataBase.shuyukhDao().clearTable()
 }

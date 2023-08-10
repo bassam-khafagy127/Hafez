@@ -14,7 +14,7 @@ fun parseImportedStudentsExcelFile(inputStream: InputStream): List<Students> {
     for (rowIndex in sheet.firstRowNum + 1 until sheet.lastRowNum + 1) {
         val row = sheet.getRow(rowIndex)
 
-        val studentCode = row.getCell(Constant.StudentExcel.STUDENT_CODE).numericCellValue.toInt()
+        val studentCode = row.getCell(Constant.StudentExcel.STUDENT_CODE).numericCellValue.toLong()
 
         val studentName =
             row.getCell(Constant.StudentExcel.STUDENT_NAME_CODE).stringCellValue

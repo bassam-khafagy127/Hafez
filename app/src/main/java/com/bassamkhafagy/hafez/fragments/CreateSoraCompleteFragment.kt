@@ -9,11 +9,14 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.bassamkhafagy.hafez.R
 import com.bassamkhafagy.hafez.databinding.FragmentCreateRecivingSorraBinding
 import com.bassamkhafagy.hafez.util.getSystemDate
 import com.bassamkhafagy.hafez.viewModel.HafezViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_sorra) {
@@ -47,36 +50,7 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
         observeSurahLiveData()
         observeSheikhLiveData()
         observeStateLiveData()
-    }
-
-    private fun observeSurahLiveData() {
-        viewModel.surahLiveDate.observe(viewLifecycleOwner) { surah ->
-            binding.apply {
-                soraTvUser.text = surah
-
-                soraTvUser.visibility = View.VISIBLE
-                soraClUser.visibility = View.VISIBLE
-                soraIvTitle.visibility = View.VISIBLE
-            }
-        }
-    }
-
-    private fun observeSheikhLiveData() {
-        viewModel.sheikhLiveDate.observe(viewLifecycleOwner) { sheikh ->
-            binding.apply {
-                sheikhTvUser.text = sheikh
-
-                sheikhTvUser.visibility = View.VISIBLE
-                sheikhClUser.visibility = View.VISIBLE
-                sheikhIvUser.visibility = View.VISIBLE
-            }
-        }
-    }
-
-    private fun observeStateLiveData() {
-        viewModel.stateLiveDate.observe(viewLifecycleOwner) { state ->
-            binding.studentPassedStateValueEd.setText(state)
-        }
+        observeStudentLiveData()
     }
 
 
@@ -93,7 +67,14 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
                 setState()
             }
 
-
+            studentCodeSearchIv.setOnClickListener {
+                val studentCode = studentCodeValueEd.text?.trim()
+                lifecycleScope.launch(Dispatchers.IO) {
+                    viewModel.getStudentByCode(
+                        studentCode.toString().toLong()
+                    )
+                }
+            }
         }
     }
 
@@ -144,5 +125,41 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
         alertDialog.show()
     }
 
+    private fun observeStudentLiveData() {
+        viewModel.studentLiveDate.observe(viewLifecycleOwner) { student ->
+            Log.d("Dialog", "${student.studentsName}")
+            binding.studentValueEd.text = student.studentsName
+        }
+    }
+
+    private fun observeSurahLiveData() {
+        viewModel.surahLiveDate.observe(viewLifecycleOwner) { surah ->
+            binding.apply {
+                soraTvUser.text = surah
+
+                soraTvUser.visibility = View.VISIBLE
+                soraClUser.visibility = View.VISIBLE
+                soraIvTitle.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun observeSheikhLiveData() {
+        viewModel.sheikhLiveDate.observe(viewLifecycleOwner) { sheikh ->
+            binding.apply {
+                sheikhTvUser.text = sheikh
+
+                sheikhTvUser.visibility = View.VISIBLE
+                sheikhClUser.visibility = View.VISIBLE
+                sheikhIvUser.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun observeStateLiveData() {
+        viewModel.stateLiveDate.observe(viewLifecycleOwner) { state ->
+            binding.studentPassedStateValueEd.setText(state)
+        }
+    }
 
 }

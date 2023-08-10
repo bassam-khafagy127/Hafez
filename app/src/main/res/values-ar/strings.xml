@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" >حافظ</string>
+    <string name="app_name">حافظ</string>
     <string name="sora_inserted_successfully">تم إدخال المراجعة بنجاح</string>
     <string name="exit">الخروج</string>
-    <string name="create_revision">إنشاء مراجعة</string>
+    <string name="create_revision">إنشاء تسليم مراجعة</string>
     <string name="required">مطلوب</string>
     <string name="student_code">كود الطالب</string>
     <string name="studentName">إسم الطالب</string>
@@ -18,6 +18,8 @@
     <string name="Faild">إعادة</string>
     <string name="importstudentexcel">إستيراد ملف الطلاب</string>
     <string name="importsheikhexcel">إستيراد ملف الشيوخ</string>
+    <string name="studentquerybycode">إستعلام عن طالب بالكود</string>
+    <string name="export_review_excel">تصدير ملف المراجعات</string>
     <string-array name="quranArray">
         <item>الفاتحة</item>
         <item>البقرة</item>

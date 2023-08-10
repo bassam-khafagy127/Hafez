@@ -18,6 +18,8 @@
     <string name="Faild">إعادة</string>
     <string name="importstudentexcel">إستيراد ملف الطلاب</string>
     <string name="importsheikhexcel">إستيراد ملف الشيوخ</string>
+    <string name="studentquerybycode">student query by code</string>
+    <string name="export_review_excel">Export review excel</string>
 
     <string-array name="quranArray">
         <item>الفاتحة</item>

@@ -24,6 +24,11 @@ class HafezViewModel @Inject constructor(private val repository: HafezRepository
     private val _stateLiveDate = MutableLiveData<String>()
     val stateLiveDate: LiveData<String> = _stateLiveDate
 
+    private val _studentLiveDate = MutableLiveData<Students>()
+    val studentLiveDate: LiveData<Students> = _studentLiveDate
+
+    private val _shuyukhLiveDate = MutableLiveData<Sheikh>()
+    val shuyukhLiveDate: LiveData<Sheikh> = _shuyukhLiveDate
 
     fun setSheikhName(sheikh: String) {
         viewModelScope.launch {
@@ -54,45 +59,9 @@ class HafezViewModel @Inject constructor(private val repository: HafezRepository
             repository.insertAllSheikh(sheikhList)
         }
     }
+
+    fun getStudentByCode(studentCode: Long) {
+        _studentLiveDate.postValue(repository.getStudentById(studentCode))
+    }
 }
 
-
-//    private val _taskLiveDate = MutableLiveData<Task>()
-//    val taskLiveDate: LiveData<Task> = _taskLiveDate
-//
-//    private val _dateLiveDate =
-//        MutableSharedFlow<Resource<Pair<String, String>>>()
-//    val dateLiveDate = _dateLiveDate.asSharedFlow()
-//
-//    private val _insertionState =
-//        MutableSharedFlow<Resource<String>>()
-//    val insertionState = _insertionState.asSharedFlow()
-
-//    private val _priorityLiveDate =
-//        MutableSharedFlow<String>()
-//    val priorityLiveDate = _priorityLiveDate.asSharedFlow()
-//
-//    private val _assigneesLiveDate =
-//        MutableSharedFlow<String>()
-//    val assigneesLiveDate = _assigneesLiveDate.asSharedFlow()
-//
-//    private val _ccAssigneesLiveDate =
-//        MutableSharedFlow<String>()
-//    val ccAssigneesLiveDate = _ccAssigneesLiveDate.asSharedFlow()
-//
-//    suspend fun insertTask(task: Task) {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            _insertionState.emit(Resource.Loading())
-//            if (repository.insertTask(task) > 0) {
-//                _insertionState.emit(Resource.Success("Data inserted successfully"))
-//            } else {
-//                _insertionState.emit(Resource.Error("Data not inserted"))
-//            }
-//        }
-//    }
-//
-//    suspend fun getAllTasks() = repository.getAllTasks()
-//
-//    fun getTaskByID(id: Long) {
-//        _taskLiveDate.postValue(repository.getTaskById(id))
-//    }
