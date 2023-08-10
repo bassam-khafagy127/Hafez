@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bassamkhafagy.hafez.data.local.Sheikh
 import com.bassamkhafagy.hafez.data.local.Students
 import com.bassamkhafagy.hafez.repositories.HafezRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -45,6 +46,12 @@ class HafezViewModel @Inject constructor(private val repository: HafezRepository
     fun insertAllStudents(studentsList: List<Students>) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertAllStudent(studentsList)
+        }
+    }
+
+    fun insertAllSheikh(sheikhList: List<Sheikh>) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertAllSheikh(sheikhList)
         }
     }
 }

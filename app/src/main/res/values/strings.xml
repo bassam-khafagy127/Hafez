@@ -16,6 +16,8 @@
     <string name="ok">OK</string>
     <string name="Passed">منقول</string>
     <string name="Faild">إعادة</string>
+    <string name="importstudentexcel">إستيراد ملف الطلاب</string>
+    <string name="importsheikhexcel">إستيراد ملف الشيوخ</string>
 
     <string-array name="quranArray">
         <item>الفاتحة</item>

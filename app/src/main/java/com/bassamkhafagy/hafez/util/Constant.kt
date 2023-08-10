@@ -13,8 +13,6 @@ object Constant {
         const val STUDENT_START_DATE_CODE = 2
         const val STUDENT_RING_CODE = 3
         const val STUDENT_PAYING_STATE_CODE = 4
-        const val STUDENT_PHONE_NUMBER_CODE = 5
-        const val STUDENT_BIRTH_DATE_CODE = 6
     }
 
     object ReviewExcel {
