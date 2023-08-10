@@ -14,6 +14,6 @@ import com.bassamkhafagy.hafez.data.local.Students
 abstract class HafezAppDataBase : RoomDatabase() {
     abstract fun shuyukhDao(): ShuyukhDao
     abstract fun studentsDao(): StudentsDao
-    abstract fun soraDao(): SoraDao
+    abstract fun soraDao(): SoraReviewDao
 }
 

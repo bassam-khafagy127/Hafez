@@ -87,32 +87,3 @@ class HafezViewModel @Inject constructor(private val repository: HafezRepository
 //    fun getTaskByID(id: Long) {
 //        _taskLiveDate.postValue(repository.getTaskById(id))
 //    }
-//
-//
-//    fun getSystemTime(): String {
-//        return getSystemDate()
-//    }
-//
-//    fun setStartEndDate(dateRange: Resource<Pair<String, String>>) {
-//        viewModelScope.launch {
-//            _dateLiveDate.emit(dateRange)
-//        }
-//    }
-//
-//    fun setPriority(priority: String) {
-//        viewModelScope.launch {
-//            _priorityLiveDate.emit(priority)
-//        }
-//    }
-//
-//    fun setAssignees(assignees: String) {
-//        viewModelScope.launch {
-//            _assigneesLiveDate.emit(assignees)
-//        }
-//    }
-//
-//    fun setCcAssignees(assignees: String) {
-//        viewModelScope.launch {
-//            _ccAssigneesLiveDate.emit(assignees)
-//        }
-//    }

@@ -1,31 +1,27 @@
 package com.bassamkhafagy.hafez.util
 
-//fun checkTask(task: Task): RegisterValidation {
-//
-//    if (task.subjectString!!.isEmpty()) {
-//        return RegisterValidation.Failed("Subject field can't be empty!!")
-//    }
-//
-//    if (task.assignees!!.isEmpty()) {
-//        return RegisterValidation.Failed("Assignees field can't be empty!!")
-//    }
-//
-//
-//    if (task.startDate!!.isEmpty()) {
-//        return RegisterValidation.Failed("Date range can't be empty!!")
-//    }
-//
-//    if (task.expectedWorkingHorus!!.isEmpty()) {
-//        return RegisterValidation.Failed("Expected working hours can't be empty!!")
-//    }
-//
-//    if (task.repeated!!.isEmpty()) {
-//        return RegisterValidation.Failed("repeated option  can't be empty!!")
-//    }
-//
-//    if (task.priority!!.isEmpty()) {
-//        return RegisterValidation.Failed("Priority field can't be empty!!")
-//    }
-//
-//    return RegisterValidation.Success
-//}
+import com.bassamkhafagy.hafez.data.local.SoraComplete
+
+fun checkReview(review: SoraComplete): RegisterValidation {
+
+    if (review.studentCode!!.isEmpty()) {
+        return RegisterValidation.Failed("Student code field cant be empty!!")
+    }
+    if (review.sheikhName!!.isEmpty()) {
+        return RegisterValidation.Failed("Sheikh name field cant be empty!!")
+    }
+
+    if (review.ring!!.isEmpty()) {
+        return RegisterValidation.Failed("Ring field cant be empty!!")
+    }
+    if (review.soraName!!.isEmpty()) {
+        return RegisterValidation.Failed("Sora field cant be empty!!")
+    }
+    if (review.state!!.isEmpty()) {
+        return RegisterValidation.Failed("Ring field cant be empty!!")
+    }
+    if (review.degree!!.toInt() > 100 || review.degree.toInt() < 0) {
+        return RegisterValidation.Failed("Degree cant be more the 100 or less than 0!!")
+    }
+    return RegisterValidation.Success
+}
