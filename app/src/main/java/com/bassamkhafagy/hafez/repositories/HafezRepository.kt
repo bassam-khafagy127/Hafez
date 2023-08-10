@@ -1,8 +1,8 @@
 package com.bassamkhafagy.hafez.repositories
 
 import com.bassamkhafagy.hafez.data.database.HafezAppDataBase
-import com.bassamkhafagy.hafez.data.local.Sheikh
 import com.bassamkhafagy.hafez.data.local.ReviewComplete
+import com.bassamkhafagy.hafez.data.local.Sheikh
 import com.bassamkhafagy.hafez.data.local.Students
 import kotlinx.coroutines.delay
 import javax.inject.Inject
@@ -27,7 +27,10 @@ class HafezRepository @Inject constructor(private val hafezAppDataBase: HafezApp
     suspend fun getAllStudents() = hafezAppDataBase.studentsDao().getAllStudents()
     suspend fun clearAllStudents() = hafezAppDataBase.studentsDao().clearTable()
 
-    fun getStudentById(id: Long) = hafezAppDataBase.studentsDao().getStudentById(id)
+    suspend fun checkIfStudentIsInTable(studentsId: Int) =
+        hafezAppDataBase.studentsDao().checkIfIdExists(studentsId)
+
+    suspend fun getStudentById(id: Int) = hafezAppDataBase.studentsDao().getStudentById(id)
 
     ///Sheikh
     suspend fun insertAllSheikh(sheikh: List<Sheikh>) {

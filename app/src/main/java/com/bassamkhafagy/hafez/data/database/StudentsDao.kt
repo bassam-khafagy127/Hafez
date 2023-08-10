@@ -14,7 +14,12 @@ interface StudentsDao {
     suspend fun getAllStudents(): List<Students>
 
     @Query("SELECT * FROM `STUDENTS_DATABASE_TABLE_NAME` WHERE code = :studentsId")
-    fun getStudentById(studentsId: Long): Students?
+    suspend fun getStudentById(studentsId: Int): Students?
+
     @Query("DELETE FROM students_database_table_name") // "excel_data" is the table name
     suspend fun clearTable()
+
+    @Query("SELECT COUNT(*) FROM students_database_table_name WHERE code = :studentsId")
+    suspend fun checkIfIdExists(studentsId: Int): Int
+
 }

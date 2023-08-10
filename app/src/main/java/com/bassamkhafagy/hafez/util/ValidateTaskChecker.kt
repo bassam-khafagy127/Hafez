@@ -18,7 +18,7 @@ fun checkReview(review: ReviewComplete): RegisterValidation {
         return RegisterValidation.Failed("Sora field cant be empty!!")
     }
     if (review.state!!.isEmpty()) {
-        return RegisterValidation.Failed("Ring field cant be empty!!")
+        return RegisterValidation.Failed("State field cant be empty!!")
     }
     if (review.degree!!.toInt() > 100 || review.degree.toInt() < 0) {
         return RegisterValidation.Failed("Degree cant be more the 100 or less than 0!!")

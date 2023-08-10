@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.bassamkhafagy.hafez.data.local.Sheikh
 import com.bassamkhafagy.hafez.data.local.Students
 import com.bassamkhafagy.hafez.repositories.HafezRepository
+import com.bassamkhafagy.hafez.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -15,8 +16,14 @@ import javax.inject.Inject
 @HiltViewModel
 class HafezViewModel @Inject constructor(private val repository: HafezRepository) : ViewModel() {
 
+    private val _uiStateLiveDate = MutableLiveData<Resource<String>>()
+    val uiStateLiveDate: LiveData<Resource<String>> = _uiStateLiveDate
+
     private val _sheikhLiveDate = MutableLiveData<String>()
     val sheikhLiveDate: LiveData<String> = _sheikhLiveDate
+
+    private val _sheikhListLiveDate = MutableLiveData<List<Sheikh>>()
+    val sheikhListLiveDate: LiveData<List<Sheikh>> = _sheikhListLiveDate
 
     private val _surahLiveDate = MutableLiveData<String>()
     val surahLiveDate: LiveData<String> = _surahLiveDate
@@ -60,8 +67,13 @@ class HafezViewModel @Inject constructor(private val repository: HafezRepository
         }
     }
 
-    fun getStudentByCode(studentCode: Long) {
+    suspend fun getStudentByCode(studentCode: Int) {
         _studentLiveDate.postValue(repository.getStudentById(studentCode))
     }
+
+    suspend fun checkIfStudentInTable(studentCode: Int): Int {
+        return repository.checkIfStudentIsInTable(studentCode)
+    }
+
 }
 
