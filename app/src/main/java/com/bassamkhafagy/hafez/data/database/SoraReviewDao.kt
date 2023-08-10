@@ -8,7 +8,7 @@ import com.bassamkhafagy.hafez.data.local.ReviewComplete
 @Dao
 interface SoraReviewDao {
     @Insert
-    suspend fun insertSoraReview(reviewComplete: ReviewComplete)
+    suspend fun insertSoraReview(reviewComplete: ReviewComplete): Long
 
     @Query("SELECT*FROM `SORA_COMPLETE_DATABASE_TABLE_NAME`")
     suspend fun getAllSorReview(): List<ReviewComplete>

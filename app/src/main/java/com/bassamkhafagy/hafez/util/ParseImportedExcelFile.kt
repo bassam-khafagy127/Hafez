@@ -39,8 +39,8 @@ fun parseImportedStudentsExcelFile(inputStream: InputStream): List<Students> {
                 null
             )
         )
-    }
 
+    }
     return dataList
 }
 

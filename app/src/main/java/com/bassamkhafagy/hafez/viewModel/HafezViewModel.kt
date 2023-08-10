@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bassamkhafagy.hafez.data.local.ReviewComplete
 import com.bassamkhafagy.hafez.data.local.Sheikh
 import com.bassamkhafagy.hafez.data.local.Students
 import com.bassamkhafagy.hafez.repositories.HafezRepository
@@ -74,6 +75,14 @@ class HafezViewModel @Inject constructor(private val repository: HafezRepository
     suspend fun checkIfStudentInTable(studentCode: Int): Int {
         return repository.checkIfStudentIsInTable(studentCode)
     }
+
+
+    suspend fun insertReview(reviewComplete: ReviewComplete) {
+        repository.insertSoraReview(reviewComplete)
+    }
+
+    suspend fun getAllSorReview() = repository.getAllSorReview()
+
 
 }
 

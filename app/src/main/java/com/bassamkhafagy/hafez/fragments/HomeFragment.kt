@@ -1,6 +1,7 @@
 package com.bassamkhafagy.hafez.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,12 +14,14 @@ import androidx.navigation.Navigation
 import com.bassamkhafagy.hafez.R
 import com.bassamkhafagy.hafez.data.local.Students
 import com.bassamkhafagy.hafez.databinding.FragmentHomeBinding
+import com.bassamkhafagy.hafez.util.exportToExcel
 import com.bassamkhafagy.hafez.util.parseImportedSheikhExcelFile
 import com.bassamkhafagy.hafez.util.parseImportedStudentsExcelFile
 import com.bassamkhafagy.hafez.viewModel.HafezViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.io.File
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -87,6 +90,18 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     HomeFragmentDirections.actionHomeFragmentToShowStudentsByCodeFragment()
                 Navigation.findNavController(view).navigate(action)
             }
+            exportReviewExcel.setOnClickListener {
+
+                lifecycleScope.launch(Dispatchers.IO) {
+                    exportToExcel(
+                        viewModel.getAllSorReview(),
+                        requireActivity().applicationContext,
+                        ""
+                    )
+                }
+
+            }
+
         }
     }
 

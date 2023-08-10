@@ -23,7 +23,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.util.Arrays
 
 @AndroidEntryPoint
 class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_sorra) {
@@ -47,7 +46,6 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
         setUpCallBacks(view)
         observeUiData()
     }
-
 
 
     private fun setUpUi() {
@@ -98,22 +96,21 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
 
             is RegisterValidation.Success -> {
                 lifecycleScope.launch(Dispatchers.IO) {
-                    //   viewModel.insertAllSheikh(reviewComposition())
-                    clearData()
+                    viewModel.insertReview(reviewComposition())
 
+                    clearFieldData()
                     Snackbar.make(
                         requireContext(),
                         view,
                         validation.toString(),
                         Snackbar.LENGTH_LONG
-                    )
-                        .show()
+                    ).show()
                 }
             }
         }
     }
 
-    private fun clearData() {
+    private fun clearFieldData() {
 
 
     }

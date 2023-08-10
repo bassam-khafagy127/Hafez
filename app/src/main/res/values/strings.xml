@@ -16,8 +16,8 @@
     <string name="ok">OK</string>
     <string name="Passed">منقول</string>
     <string name="Faild">إعادة</string>
-    <string name="importstudentexcel">إستيراد ملف الطلاب</string>
-    <string name="importsheikhexcel">إستيراد ملف الشيوخ</string>
+    <string name="importstudentexcel">Import student\'s File</string>
+    <string name="importsheikhexcel">Import Sheikh File</string>
     <string name="studentquerybycode">student query by code</string>
     <string name="export_review_excel">Export review excel</string>
     <string name="cantBeEmpty">Can\'t be empty!!</string>

@@ -13,17 +13,17 @@
     <string name="sora">سورة</string>
     <string name="passedState">الحالة</string>
     <string name="degree">الدرجة</string>
-    <string name="ok">OK</string>
+    <string name="ok">حسنا</string>
     <string name="Passed">منقول</string>
     <string name="Faild">إعادة</string>
     <string name="importstudentexcel">إستيراد ملف الطلاب</string>
     <string name="importsheikhexcel">إستيراد ملف الشيوخ</string>
     <string name="studentquerybycode">إستعلام عن طالب بالكود</string>
     <string name="export_review_excel">تصدير ملف المراجعات</string>
-    <string name="cantBeEmpty">Can\'t be empty!!</string>
-    <string name="choseSheikh">Chose Sheikh</string>
-    <string name="choseSurah">Chose Surah</string>
-    <string name="isNotFounded">" is not founded"</string>
+    <string name="cantBeEmpty">لا يمكن ان يترك فارغا!!</string>
+    <string name="choseSheikh">إختر شيخ</string>
+    <string name="choseSurah">إختر سورة</string>
+    <string name="isNotFounded">" ليس موجودا"</string>
     <string-array name="quranArray">
         <item>الفاتحة</item>
         <item>البقرة</item>
