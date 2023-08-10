@@ -6,7 +6,7 @@ import com.bassamkhafagy.hafez.util.Constant.STUDENTS_DATABASE_TABLE_NAME
 
 @Entity(tableName = STUDENTS_DATABASE_TABLE_NAME)
 data class Students(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     val code: Int,
     val studentsName: String?,
     val startDate: String?,

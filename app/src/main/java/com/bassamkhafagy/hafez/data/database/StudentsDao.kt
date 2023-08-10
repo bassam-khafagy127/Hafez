@@ -8,12 +8,13 @@ import com.bassamkhafagy.hafez.data.local.Students
 @Dao
 interface StudentsDao {
     @Insert
-    suspend fun insertStudent(student: Students): Long
+    suspend fun insertAllStudent(student: List<Students>)
 
     @Query("SELECT*FROM `STUDENTS_DATABASE_TABLE_NAME` ORDER BY code")
     suspend fun getAllStudents(): List<Students>
 
     @Query("SELECT * FROM `STUDENTS_DATABASE_TABLE_NAME` WHERE code = :studentsId")
     fun getStudentById(studentsId: Long): Students?
-
+    @Query("DELETE FROM students_database_table_name") // "excel_data" is the table name
+    suspend fun clearTable()
 }

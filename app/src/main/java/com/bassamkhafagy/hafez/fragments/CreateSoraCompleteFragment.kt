@@ -20,6 +20,7 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
     private lateinit var binding: FragmentCreateRecivingSorraBinding
     private val viewModel by viewModels<HafezViewModel>()
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -91,6 +92,8 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
             studentPassedStateValueEd.setOnClickListener {
                 setState()
             }
+
+
         }
     }
 
@@ -140,4 +143,6 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
         }
         alertDialog.show()
     }
+
+
 }

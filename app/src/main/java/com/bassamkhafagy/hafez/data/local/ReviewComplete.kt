@@ -6,7 +6,7 @@ import com.bassamkhafagy.hafez.util.Constant.SHUYUKH_DATABASE_TABLE_NAME
 import com.bassamkhafagy.hafez.util.Constant.SORA_COMPLETE_DATABASE_TABLE_NAME
 
 @Entity(tableName = SORA_COMPLETE_DATABASE_TABLE_NAME)
-data class SoraComplete(
+data class ReviewComplete(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     val date: String?,

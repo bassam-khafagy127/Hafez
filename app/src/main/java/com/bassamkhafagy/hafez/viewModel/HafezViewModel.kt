@@ -4,14 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bassamkhafagy.hafez.data.local.Sheikh
+import com.bassamkhafagy.hafez.data.local.Students
 import com.bassamkhafagy.hafez.repositories.HafezRepository
-import com.bassamkhafagy.hafez.util.Resource
-import com.bassamkhafagy.hafez.util.getSystemDate
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -43,6 +39,12 @@ class HafezViewModel @Inject constructor(private val repository: HafezRepository
     fun setStateValue(state: String) {
         viewModelScope.launch {
             _stateLiveDate.value = state
+        }
+    }
+
+    fun insertAllStudents(studentsList: List<Students>) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertAllStudent(studentsList)
         }
     }
 }
