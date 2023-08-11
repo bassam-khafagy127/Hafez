@@ -1,8 +1,8 @@
 package com.bassamkhafagy.hafez.util
 
-import com.bassamkhafagy.hafez.data.local.ReviewComplete
+import com.bassamkhafagy.hafez.data.local.SoraReview
 
-fun checkReview(review: ReviewComplete): RegisterValidation {
+fun checkReview(review: SoraReview): RegisterValidation {
 
     if (review.studentCode!!.isEmpty()) {
         return RegisterValidation.Failed("Student code field cant be empty!!")

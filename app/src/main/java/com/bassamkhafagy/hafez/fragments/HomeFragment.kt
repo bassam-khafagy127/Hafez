@@ -1,27 +1,21 @@
 package com.bassamkhafagy.hafez.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.bassamkhafagy.hafez.R
-import com.bassamkhafagy.hafez.data.local.Students
 import com.bassamkhafagy.hafez.databinding.FragmentHomeBinding
-import com.bassamkhafagy.hafez.util.exportToExcel
-import com.bassamkhafagy.hafez.util.parseImportedSheikhExcelFile
 import com.bassamkhafagy.hafez.util.parseImportedStudentsExcelFile
 import com.bassamkhafagy.hafez.viewModel.HafezViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.io.File
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -35,28 +29,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             uri?.let {
                 val inputStream = requireContext().contentResolver.openInputStream(it)
                 inputStream?.let { stream ->
-                    lifecycleScope.launch {
-                        viewModel.insertAllStudents(parseImportedStudentsExcelFile(stream))
+                    lifecycleScope.launch (Dispatchers.IO){
+                      viewModel.clearAllImportedData()
+                         viewModel.insertAllImportedDate(parseImportedStudentsExcelFile(stream))
+                        stream.close()
                     }
-                    stream.close()
+
                 }
             }
         }
-
-    // Set up the file picker contract
-    private val sheikhFilePickerContract =
-        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-            uri?.let {
-                val inputStream = requireContext().contentResolver.openInputStream(it)
-                inputStream?.let { stream ->
-                    lifecycleScope.launch {
-                        viewModel.insertAllSheikh(parseImportedSheikhExcelFile(stream))
-                    }
-                    stream.close()
-                }
-            }
-        }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -75,11 +56,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun setUpCallBacks(view: View) {
         binding.apply {
             importStudentExcel.setOnClickListener {
-                selectExcelFile(studentFilePickerContract)
+                selectExcelFile()
             }
-            importSheikhExcel.setOnClickListener {
-                selectExcelFile(sheikhFilePickerContract)
-            }
+
             createReview.setOnClickListener {
                 val action =
                     HomeFragmentDirections.actionHomeFragmentToCreateSoraCompleteFragment()
@@ -93,27 +72,19 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             exportReviewExcel.setOnClickListener {
 
                 lifecycleScope.launch(Dispatchers.IO) {
-                    exportToExcel(
-                        viewModel.getAllSorReview(),
-                        requireActivity().applicationContext,
-                        ""
-                    )
+//                    exportToExcel(
+//                        viewModel.getAllSorReview(),
+//                        requireActivity().applicationContext,
+//                        ""
+//                    )
                 }
-
             }
-
         }
     }
 
-    private fun selectExcelFile(launcherType: ActivityResultLauncher<String>) {
+    private fun selectExcelFile() {
         lifecycleScope.launch(Dispatchers.IO) {
-            if (launcherType == studentFilePickerContract) {
-                studentFilePickerContract.launch("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-            }
-            if (launcherType == sheikhFilePickerContract) {
-                sheikhFilePickerContract.launch("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-
-            }
+            studentFilePickerContract.launch("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
         }
     }
 }

@@ -2,17 +2,17 @@ package com.bassamkhafagy.hafez.util
 
 object Constant {
     const val HAFEZ_DATABASE_NAME = "HAFEZ_DATABASE_NAME"
-    const val SHUYUKH_DATABASE_TABLE_NAME = "SHUYUKH_DATABASE_TABLE_NAME"
-    const val STUDENTS_DATABASE_TABLE_NAME = "STUDENTS_DATABASE_TABLE_NAME"
-    const val SORA_COMPLETE_DATABASE_TABLE_NAME = "SORA_COMPLETE_DATABASE_TABLE_NAME"
-    const val READ_REQUEST_CODE = 4554
+
+    const val IMPORTED_DATA_TABLE = "IMPORTED_DATA_TABLE"
+    const val SORA_REVIEW_DATABASE_TABLE_NAME = "SORA_REVIEW_DATABASE_TABLE_NAME"
 
     object StudentExcel {
         const val STUDENT_CODE = 0
         const val STUDENT_NAME_CODE = 1
-        const val STUDENT_START_DATE_CODE = 2
-        const val STUDENT_RING_CODE = 3
-        const val STUDENT_PAYING_STATE_CODE = 4
+        const val STUDENT_RING = 2
+        const val STUDENT_SHEIKH_NAME = 3
+        const val STUDENT_PHONE_NUMBER = 4
+        const val STUDENT_PAYING_STATE = 5
     }
 
     object ReviewExcel {
@@ -26,10 +26,4 @@ object Constant {
         const val REVIEW_DEGREE = 7
     }
 
-    object SheikhExcel {
-        const val SHEIKH_RING = 0
-        const val SHEIKH_NAME = 1
-        const val SHEIKH_PER_RING = 2
-
-    }
 }

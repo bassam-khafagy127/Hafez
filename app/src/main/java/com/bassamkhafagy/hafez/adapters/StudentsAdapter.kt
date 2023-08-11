@@ -1,7 +1,7 @@
 package com.bassamkhafagy.hafez.adapters
 
 import com.bassamkhafagy.hafez.base.BaseAdapter
-import com.bassamkhafagy.hafez.data.local.Students
+import com.bassamkhafagy.hafez.data.local.ImportedData
 
 
 class StudentsAdapter<T>(
@@ -11,6 +11,6 @@ class StudentsAdapter<T>(
 
 
     interface StudentsInterActionListener : BaseInterActionListener {
-        fun onClickStudents(student: Students)
+        fun onClickStudents(student: ImportedData)
     }
 }

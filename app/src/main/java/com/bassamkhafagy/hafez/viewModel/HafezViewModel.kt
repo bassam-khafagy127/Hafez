@@ -4,9 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bassamkhafagy.hafez.data.local.ReviewComplete
-import com.bassamkhafagy.hafez.data.local.Sheikh
-import com.bassamkhafagy.hafez.data.local.Students
+import com.bassamkhafagy.hafez.data.local.ImportedData
+import com.bassamkhafagy.hafez.data.local.SoraReview
 import com.bassamkhafagy.hafez.repositories.HafezRepository
 import com.bassamkhafagy.hafez.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,26 +16,25 @@ import javax.inject.Inject
 @HiltViewModel
 class HafezViewModel @Inject constructor(private val repository: HafezRepository) : ViewModel() {
 
+    //uiInterAction
     private val _uiStateLiveDate = MutableLiveData<Resource<String>>()
     val uiStateLiveDate: LiveData<Resource<String>> = _uiStateLiveDate
 
+    //setNameByCode
+    private val _studentNameLiveDate = MutableLiveData<String>()
+    val studentNameLiveDate: LiveData<String> = _studentNameLiveDate
+
+
+    //<-- Dialogs Live Data
     private val _sheikhLiveDate = MutableLiveData<String>()
     val sheikhLiveDate: LiveData<String> = _sheikhLiveDate
-
-    private val _sheikhListLiveDate = MutableLiveData<List<Sheikh>>()
-    val sheikhListLiveDate: LiveData<List<Sheikh>> = _sheikhListLiveDate
 
     private val _surahLiveDate = MutableLiveData<String>()
     val surahLiveDate: LiveData<String> = _surahLiveDate
 
-    private val _stateLiveDate = MutableLiveData<String>()
-    val stateLiveDate: LiveData<String> = _stateLiveDate
-
-    private val _studentLiveDate = MutableLiveData<Students>()
-    val studentLiveDate: LiveData<Students> = _studentLiveDate
-
-    private val _shuyukhLiveDate = MutableLiveData<Sheikh>()
-    val shuyukhLiveDate: LiveData<Sheikh> = _shuyukhLiveDate
+    private val _passedStateLiveDate = MutableLiveData<String>()
+    val passedStateLiveData: LiveData<String> = _passedStateLiveDate
+    //-->
 
     fun setSheikhName(sheikh: String) {
         viewModelScope.launch {
@@ -52,37 +50,43 @@ class HafezViewModel @Inject constructor(private val repository: HafezRepository
 
     fun setStateValue(state: String) {
         viewModelScope.launch {
-            _stateLiveDate.value = state
+            _passedStateLiveDate.value = state
         }
     }
 
-    fun insertAllStudents(studentsList: List<Students>) {
+    fun setStudentName(state: String) {
+        viewModelScope.launch {
+            _studentNameLiveDate.value = state
+        }
+    }
+
+
+    suspend fun insertAllImportedDate(importedData: List<ImportedData>) {
+        repository.insertAllImportedData(importedData)
+    }
+
+    suspend fun clearAllImportedData() {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.insertAllStudent(studentsList)
+            repository.clearImportedDataTable()
         }
     }
 
-    fun insertAllSheikh(sheikhList: List<Sheikh>) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.insertAllSheikh(sheikhList)
-        }
+    suspend fun checkIFStudentExist(studentCode: Long) =
+        repository.checkIFStudentExist(studentCode)
+
+
+    suspend fun getStudentByCode(studentCode: Long) =
+        repository.getStudentByCode(studentCode)
+
+
+    suspend fun saveReview(soraReview: SoraReview) {
+        _uiStateLiveDate.postValue(Resource.Loading())
+
+        if (repository.insertSoraReview(soraReview) > 0) {
+            _uiStateLiveDate.postValue(Resource.Success(""))
+
+        } else _uiStateLiveDate.postValue(Resource.Error(""))
+
     }
-
-    suspend fun getStudentByCode(studentCode: Int) {
-        _studentLiveDate.postValue(repository.getStudentById(studentCode))
-    }
-
-    suspend fun checkIfStudentInTable(studentCode: Int): Int {
-        return repository.checkIfStudentIsInTable(studentCode)
-    }
-
-
-    suspend fun insertReview(reviewComplete: ReviewComplete) {
-        repository.insertSoraReview(reviewComplete)
-    }
-
-    suspend fun getAllSorReview() = repository.getAllSorReview()
-
-
 }
 

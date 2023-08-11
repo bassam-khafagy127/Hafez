@@ -2,13 +2,12 @@ package com.bassamkhafagy.hafez.data.local
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.bassamkhafagy.hafez.util.Constant.SHUYUKH_DATABASE_TABLE_NAME
-import com.bassamkhafagy.hafez.util.Constant.SORA_COMPLETE_DATABASE_TABLE_NAME
+import com.bassamkhafagy.hafez.util.Constant.SORA_REVIEW_DATABASE_TABLE_NAME
 
-@Entity(tableName = SORA_COMPLETE_DATABASE_TABLE_NAME)
-data class ReviewComplete(
+@Entity(tableName = SORA_REVIEW_DATABASE_TABLE_NAME)
+data class SoraReview(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Long,
     val date: String?,
     val studentCode: String?,
     val studentName: String?,

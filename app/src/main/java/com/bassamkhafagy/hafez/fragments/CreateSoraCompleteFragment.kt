@@ -12,11 +12,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.bassamkhafagy.hafez.R
-import com.bassamkhafagy.hafez.data.local.ReviewComplete
+import com.bassamkhafagy.hafez.data.local.SoraReview
 import com.bassamkhafagy.hafez.databinding.FragmentCreateRecivingSorraBinding
 import com.bassamkhafagy.hafez.util.RegisterValidation
+import com.bassamkhafagy.hafez.util.Resource
 import com.bassamkhafagy.hafez.util.checkReview
 import com.bassamkhafagy.hafez.util.getSystemDate
+import com.bassamkhafagy.hafez.util.showSuccessToast
 import com.bassamkhafagy.hafez.viewModel.HafezViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,7 +30,6 @@ import kotlinx.coroutines.withContext
 class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_sorra) {
     private lateinit var binding: FragmentCreateRecivingSorraBinding
     private val viewModel by viewModels<HafezViewModel>()
-    private lateinit var sheikhArray: Array<String>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,6 +60,7 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
         observeSheikhLiveData()
         observeStateLiveData()
         observeStudentLiveData()
+        observeUiStateLiveData()
     }
 
 
@@ -86,7 +88,6 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
     }
 
     private fun reviewSave(view: View) {
-
         when (val validation = checkReview(reviewComposition())) {
 
             is RegisterValidation.Failed -> {
@@ -96,26 +97,15 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
 
             is RegisterValidation.Success -> {
                 lifecycleScope.launch(Dispatchers.IO) {
-                    viewModel.insertReview(reviewComposition())
-
+                    viewModel.saveReview(reviewComposition())
                     clearFieldData()
-                    Snackbar.make(
-                        requireContext(),
-                        view,
-                        validation.toString(),
-                        Snackbar.LENGTH_LONG
-                    ).show()
                 }
             }
         }
     }
 
-    private fun clearFieldData() {
 
-
-    }
-
-    private fun reviewComposition(): ReviewComplete {
+    private fun reviewComposition(): SoraReview {
         val studentCode = binding.studentCodeValueEd.text.toString()
         val date = binding.dateFieldShowTv.text.toString()
         val studentName = binding.studentNameValueEd.text.toString()
@@ -124,7 +114,7 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
         val soraName = binding.soraTvUser.text.toString()
         val state = binding.studentPassedStateValueEd.text.toString()
         val degree = binding.studentPassedDegreeValueEd.text.toString()
-        return ReviewComplete(
+        return SoraReview(
             0,
             date,
             studentCode,
@@ -137,6 +127,45 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
         )
     }
 
+
+    private fun clearFieldData() {
+        binding.studentCodeValueEd.text?.clear()
+        binding.studentNameValueEd.text?.clear()
+        binding.ringValueEd.text?.clear()
+        binding.sheikhTvUser.text?.clear()
+        binding.soraTvUser.text?.clear()
+        binding.studentPassedStateValueEd.text?.clear()
+        binding.studentPassedDegreeValueEd.text?.clear()
+    }
+
+    private fun getStudentNameByCode(studentCode: String) {
+        if (studentCode.isNotEmpty()) {
+            lifecycleScope.launch(Dispatchers.IO) {
+
+                if (viewModel.checkIFStudentExist(studentCode.toLong()) > 0) {
+                    val name = viewModel.getStudentByCode(
+                        studentCode.toLong()
+                    )
+                    viewModel.setStudentName(name ?: "Not Found")
+                } else {
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(
+                            requireContext(),
+                            resources.getString(R.string.student_code) + " ${resources.getString(R.string.isNotFounded)}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+
+            }
+        } else {
+            Toast.makeText(
+                requireContext(),
+                resources.getString(R.string.student_code) + " ${resources.getString(R.string.cantBeEmpty)}",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
 
     private fun setSheikhName() {
         val alertDialog = AlertDialog.Builder(requireContext())
@@ -185,45 +214,17 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
         alertDialog.show()
     }
 
-    private fun getStudentNameByCode(studentCode: String) {
-        if (studentCode.isNotEmpty()) {
-            lifecycleScope.launch(Dispatchers.IO) {
-
-                if (viewModel.checkIfStudentInTable(studentCode.toInt()) > 0) {
-                    viewModel.getStudentByCode(
-                        studentCode.toInt()
-                    )
-                } else {
-                    withContext(Dispatchers.Main) {
-                        Toast.makeText(
-                            requireContext(),
-                            resources.getString(R.string.student_code) + " ${resources.getString(R.string.isNotFounded)}",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-
-            }
-        } else {
-            Toast.makeText(
-                requireContext(),
-                resources.getString(R.string.student_code) + " ${resources.getString(R.string.cantBeEmpty)}",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-    }
-
     private fun observeStudentLiveData() {
-        viewModel.studentLiveDate.observe(viewLifecycleOwner) { student ->
-            Log.d("Dialog", "${student.studentsName}")
-            binding.studentNameValueEd.text = student.studentsName
+        viewModel.studentNameLiveDate.observe(viewLifecycleOwner) { student ->
+            Log.d("Dialog", student)
+            binding.studentNameValueEd.setText(student)
         }
     }
 
     private fun observeSurahLiveData() {
         viewModel.surahLiveDate.observe(viewLifecycleOwner) { surah ->
             binding.apply {
-                soraTvUser.text = surah
+                soraTvUser.setText(surah)
 
                 soraTvUser.visibility = View.VISIBLE
                 soraClUser.visibility = View.VISIBLE
@@ -235,7 +236,7 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
     private fun observeSheikhLiveData() {
         viewModel.sheikhLiveDate.observe(viewLifecycleOwner) { sheikh ->
             binding.apply {
-                sheikhTvUser.text = sheikh
+                sheikhTvUser.setText(sheikh)
 
                 sheikhTvUser.visibility = View.VISIBLE
                 sheikhClUser.visibility = View.VISIBLE
@@ -245,8 +246,22 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
     }
 
     private fun observeStateLiveData() {
-        viewModel.stateLiveDate.observe(viewLifecycleOwner) { state ->
+        viewModel.passedStateLiveData.observe(viewLifecycleOwner) { state ->
             binding.studentPassedStateValueEd.setText(state)
+        }
+    }
+
+    private fun observeUiStateLiveData() {
+        viewModel.uiStateLiveDate.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is Resource.Loading -> {}
+                is Resource.Error -> {}
+                is Resource.Success -> {
+                    showSuccessToast(requireContext())
+                }
+
+                is Resource.Unspecified -> {}
+            }
         }
     }
 
