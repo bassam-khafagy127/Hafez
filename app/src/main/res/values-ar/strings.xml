@@ -17,7 +17,6 @@
     <string name="Passed">منقول</string>
     <string name="Faild">إعادة</string>
     <string name="importstudentexcel">إستيراد ملف الطلاب</string>
-    <string name="importsheikhexcel">إستيراد ملف الشيوخ</string>
     <string name="studentquerybycode">إستعلام عن طالب بالكود</string>
     <string name="export_review_excel">تصدير ملف المراجعات</string>
     <string name="cantBeEmpty">لا يمكن ان يترك فارغا!!</string>

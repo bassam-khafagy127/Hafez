@@ -28,7 +28,7 @@ class ShowStudentsByCodeFragment : Fragment(R.layout.fragment_show_student_bycod
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = FragmentShowStudentBycodeBinding.inflate(layoutInflater)
         return binding.root
@@ -36,12 +36,12 @@ class ShowStudentsByCodeFragment : Fragment(R.layout.fragment_show_student_bycod
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpCallbacks(view)
+        setUpCallbacks()
         observeStudentData()
     }
 
 
-    private fun setUpCallbacks(view: View) {
+    private fun setUpCallbacks() {
         binding.apply {
             binding.searchIv.setOnClickListener {
                 val studentCode = searchEd.text?.trim().toString()
