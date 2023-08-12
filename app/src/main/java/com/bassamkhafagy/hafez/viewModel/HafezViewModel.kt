@@ -87,6 +87,8 @@ class HafezViewModel @Inject constructor(private val repository: HafezRepository
         _studentLiveDate.postValue(repository.getStudentDataByCode(studentCode))
     }
 
+    suspend fun getAllSoraReviews() = repository.getAllReviews()
+
     suspend fun saveReview(soraReview: SoraReview) {
         _uiStateLiveDate.postValue(Resource.Loading())
 

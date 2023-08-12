@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.bassamkhafagy.hafez.R
 import com.bassamkhafagy.hafez.databinding.FragmentHomeBinding
+import com.bassamkhafagy.hafez.util.exportSoraReviews
 import com.bassamkhafagy.hafez.util.parseImportedStudentsExcelFile
 import com.bassamkhafagy.hafez.viewModel.HafezViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,9 +30,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             uri?.let {
                 val inputStream = requireContext().contentResolver.openInputStream(it)
                 inputStream?.let { stream ->
-                    lifecycleScope.launch (Dispatchers.IO){
-                      viewModel.clearAllImportedData()
-                         viewModel.insertAllImportedDate(parseImportedStudentsExcelFile(stream))
+                    lifecycleScope.launch(Dispatchers.IO) {
+                        viewModel.clearAllImportedData()
+                        viewModel.insertAllImportedDate(parseImportedStudentsExcelFile(stream))
                         stream.close()
                     }
 
@@ -72,11 +73,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             exportReviewExcel.setOnClickListener {
 
                 lifecycleScope.launch(Dispatchers.IO) {
-//                    exportToExcel(
-//                        viewModel.getAllSorReview(),
-//                        requireActivity().applicationContext,
-//                        ""
-//                    )
+                    val allReviews = viewModel.getAllSoraReviews()
+                    exportSoraReviews(allReviews, "exported")
                 }
             }
         }
