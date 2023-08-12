@@ -80,6 +80,10 @@ class HafezViewModel @Inject constructor(private val repository: HafezRepository
         }
     }
 
+    suspend fun getAllSheikhData() =
+        repository.getAllSheikhData()
+
+
     suspend fun checkIFStudentExist(studentCode: Long) =
         repository.checkIFStudentExist(studentCode)
 

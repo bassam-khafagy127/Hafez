@@ -67,7 +67,13 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
     private fun setUpCallBacks(view: View) {
         binding.apply {
             sheikhCl.setOnClickListener {
-                setSheikhName()
+                lifecycleScope.launch(Dispatchers.IO) {
+                    val allSheikh = viewModel.getAllSheikhData()
+                    withContext(Dispatchers.Main) {
+                        setSheikhName(allSheikh)
+                    }
+                }
+
             }
 
             soraCl.setOnClickListener {
@@ -98,7 +104,7 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
             is RegisterValidation.Success -> {
                 lifecycleScope.launch(Dispatchers.IO) {
                     viewModel.saveReview(reviewComposition())
-                    withContext(Dispatchers.Main){
+                    withContext(Dispatchers.Main) {
                         clearFieldData()
                     }
                 }
@@ -169,22 +175,17 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
         }
     }
 
-    private fun setSheikhName() {
+    private fun setSheikhName(listItems: List<String>) {
         val alertDialog = AlertDialog.Builder(requireContext())
         alertDialog.setTitle("Chose Sheikh")
         alertDialog.setPositiveButton(getString(R.string.ok), null)
         val checkItem = 0
-        val sheikh = arrayOf(
-            "AhmedTanaby",
-            "Saed Elzaki",
-            "AhmedTanaby",
-            "Saed Elzaki",
-            "AhmedTanaby",
-            "Saed Elzaki"
-        )
-        alertDialog.setSingleChoiceItems(sheikh, checkItem) { _: DialogInterface?, which: Int ->
-            Log.d("DialogSheikh2", sheikh[which])
-            viewModel.setSheikhName(sheikh[which])
+        alertDialog.setSingleChoiceItems(
+            listItems.toTypedArray(),
+            checkItem
+        ) { _: DialogInterface?, which: Int ->
+            Log.d("DialogSheikh2", listItems[which])
+            viewModel.setSheikhName(listItems[which])
         }
         alertDialog.show()
     }
