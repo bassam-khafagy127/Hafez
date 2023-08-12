@@ -25,7 +25,8 @@
     <string name="isNotFounded">" ليس موجودا"</string>
     <string name="import_export_review_excel">استيراد وتصدير اكسل</string>
     <string name="export_review_s">تصدير المراجعات</string>
-    <string name="please_enter_your_name">Please enter your name</string>
+    <string name="please_enter_your_name">من فضلك أدخل إسمك</string>
+    <string name="data_imported_successfully">تم استيراد البيانات بنجاح</string>
     <string-array name="quranArray">
         <item>الفاتحة</item>
         <item>البقرة</item>

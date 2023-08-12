@@ -11,12 +11,19 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.bassamkhafagy.hafez.R
 import com.bassamkhafagy.hafez.databinding.FragmentImportExportExcelBinding
+import com.bassamkhafagy.hafez.util.Resource
 import com.bassamkhafagy.hafez.util.exportSoraReviews
 import com.bassamkhafagy.hafez.util.parseImportedStudentsExcelFile
+import com.bassamkhafagy.hafez.util.showExportDataSuccessToast
+import com.bassamkhafagy.hafez.util.showImportDataSuccessToast
+import com.bassamkhafagy.hafez.util.showSuccessToast
 import com.bassamkhafagy.hafez.viewModel.HafezViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
 @AndroidEntryPoint
 class ImportExportExcelFragment : Fragment(R.layout.fragment_import_export_excel) {
     private lateinit var binding: FragmentImportExportExcelBinding
@@ -29,9 +36,13 @@ class ImportExportExcelFragment : Fragment(R.layout.fragment_import_export_excel
                 val inputStream = requireContext().contentResolver.openInputStream(it)
                 inputStream?.let { stream ->
                     lifecycleScope.launch(Dispatchers.IO) {
+
                         viewModel.clearAllImportedData()
                         viewModel.insertAllImportedDate(parseImportedStudentsExcelFile(stream))
                         stream.close()
+                        viewModel.setUiState(Resource.Success("Import"))
+                        delay(10)
+                        viewModel.setUiState(Resource.Unspecified())
                     }
 
                 }
@@ -50,6 +61,7 @@ class ImportExportExcelFragment : Fragment(R.layout.fragment_import_export_excel
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpCallBacks()
+        observeUiStateLiveData()
     }
 
     private fun setUpCallBacks() {
@@ -66,20 +78,38 @@ class ImportExportExcelFragment : Fragment(R.layout.fragment_import_export_excel
 
     }
 
-    private fun exportData(name: String) {
-        if (name.isNotEmpty() && name.length > 6) {
-            lifecycleScope.launch(Dispatchers.IO) {
-                val allReviews = viewModel.getAllSoraReviews()
-                exportSoraReviews(allReviews, name)
+    private fun observeUiStateLiveData() {
+        viewModel.uiStateLiveDate.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is Resource.Loading -> {}
+                is Resource.Error -> {}
+                is Resource.Success -> {
+                    if (state.data == "Import") {
+                        showImportDataSuccessToast(requireContext())
+                    }
+                    if (state.data == "Exported") {
+                        showExportDataSuccessToast(requireContext())
+                    }
+                }
+
+                is Resource.Unspecified -> {}
             }
         }
-        if (name.isEmpty() || name.length < 6) {
-            Toast.makeText(
-                requireContext(),
-                "${resources.getString(R.string.shiekh)} ${resources.getString(R.string.cantBeEmpty)}",
-                Toast.LENGTH_SHORT
-            ).show()
+    }
+
+    private fun exportData(name: String) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            val allReviews = viewModel.getAllSoraReviews()
+            if (name.isNotEmpty() && name.length > 2) {
+                exportSoraReviews(allReviews, name)
+                viewModel.setUiState(Resource.Success("Exported"))
+            } else {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(requireContext(), "Can't be empty", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
+
     }
 
     private fun selectExcelFile() {

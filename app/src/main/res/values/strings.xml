@@ -26,6 +26,7 @@
     <string name="import_export_review_excel">import export review excel</string>
     <string name="export_review_s">Export review\'s</string>
     <string name="please_enter_your_name">Please enter your name</string>
+    <string name="data_imported_successfully">Data imported successfully</string>
 
     <string-array name="quranArray">
         <item>الفاتحة</item>
