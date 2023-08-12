@@ -143,7 +143,7 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
             lifecycleScope.launch(Dispatchers.IO) {
 
                 if (viewModel.checkIFStudentExist(studentCode.toLong()) > 0) {
-                    val name = viewModel.getStudentByCode(
+                    val name = viewModel.getStudentNameByCode(
                         studentCode.toLong()
                     )
                     viewModel.setStudentName(name ?: "Not Found")

@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bassamkhafagy.hafez.data.local.ImportedData
 import com.bassamkhafagy.hafez.data.local.SoraReview
+import com.bassamkhafagy.hafez.data.local.Student
 import com.bassamkhafagy.hafez.repositories.HafezRepository
 import com.bassamkhafagy.hafez.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,6 +24,10 @@ class HafezViewModel @Inject constructor(private val repository: HafezRepository
     //setNameByCode
     private val _studentNameLiveDate = MutableLiveData<String>()
     val studentNameLiveDate: LiveData<String> = _studentNameLiveDate
+
+    //setAllDataInShowByCode
+    private val _studentLiveDate = MutableLiveData<Student>()
+    val studentLiveDate: LiveData<Student> = _studentLiveDate
 
 
     //<-- Dialogs Live Data
@@ -75,9 +80,12 @@ class HafezViewModel @Inject constructor(private val repository: HafezRepository
         repository.checkIFStudentExist(studentCode)
 
 
-    suspend fun getStudentByCode(studentCode: Long) =
-        repository.getStudentByCode(studentCode)
+    suspend fun getStudentNameByCode(studentCode: Long) =
+        repository.getStudentNameByCode(studentCode)
 
+    suspend fun getStudentDataByCode(studentCode: Long) {
+        _studentLiveDate.postValue(repository.getStudentDataByCode(studentCode))
+    }
 
     suspend fun saveReview(soraReview: SoraReview) {
         _uiStateLiveDate.postValue(Resource.Loading())

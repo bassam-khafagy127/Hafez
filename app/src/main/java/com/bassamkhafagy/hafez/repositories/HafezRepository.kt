@@ -20,8 +20,10 @@ class HafezRepository @Inject constructor(private val hafezAppDataBase: HafezApp
         hafezAppDataBase.importedStudentsDao().getAllShuyukh()
 
 
-    suspend fun getStudentByCode(studentCode: Long) =
-        hafezAppDataBase.importedStudentsDao().getStudentByCode(studentCode)
+    suspend fun getStudentNameByCode(studentCode: Long) =
+        hafezAppDataBase.importedStudentsDao().getStudentNameByCode(studentCode)
+    suspend fun getStudentDataByCode(studentCode: Long) =
+        hafezAppDataBase.importedStudentsDao().getStudentDataByCodeData(studentCode)
 
 
     suspend fun clearImportedDataTable() = hafezAppDataBase.importedStudentsDao().clearTable()
