@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">حافظ</string>
-    <string name="sora_inserted_successfully">تم إدخال المراجعة بنجاح</string>
+    <string name="sora_inserted_successfully">تم إدخال المراجعة \n بنجاح</string>
     <string name="exit">الخروج</string>
     <string name="create_revision">إنشاء تسليم مراجعة</string>
     <string name="required">مطلوب</string>

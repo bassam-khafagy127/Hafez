@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Hafez</string>
-    <string name="sora_inserted_successfully">The review has been entered successfully</string>
+    <string name="sora_inserted_successfully">The review has been entered \nsuccessfully</string>
     <string name="exit">Exit</string>
     <string name="create_revision">Create Review</string>
     <string name="required">required</string>

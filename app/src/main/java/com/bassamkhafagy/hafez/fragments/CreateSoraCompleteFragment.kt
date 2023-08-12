@@ -98,7 +98,9 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
             is RegisterValidation.Success -> {
                 lifecycleScope.launch(Dispatchers.IO) {
                     viewModel.saveReview(reviewComposition())
-                    clearFieldData()
+                    withContext(Dispatchers.Main){
+                        clearFieldData()
+                    }
                 }
             }
         }
@@ -129,13 +131,13 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
 
 
     private fun clearFieldData() {
-        binding.studentCodeValueEd.text?.clear()
-        binding.studentNameValueEd.text?.clear()
-        binding.ringValueEd.text?.clear()
-        binding.sheikhTvUser.text?.clear()
-        binding.soraTvUser.text?.clear()
-        binding.studentPassedStateValueEd.text?.clear()
-        binding.studentPassedDegreeValueEd.text?.clear()
+        binding.studentCodeValueEd.setText("")
+        binding.studentNameValueEd.setText("")
+        binding.ringValueEd.setText("")
+        binding.sheikhTvUser.setText("")
+        binding.soraTvUser.setText("")
+        binding.studentPassedStateValueEd.setText("")
+        binding.studentPassedDegreeValueEd.setText("")
     }
 
     private fun getStudentNameByCode(studentCode: String) {
