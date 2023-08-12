@@ -159,8 +159,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:elevation="20dp"
                     android:layout_marginBottom="16dp"
+                    android:elevation="20dp"
                     android:src="@drawable/ic_search"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -539,6 +539,7 @@
 
             <!-- passedState-->
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/stateCl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp">
@@ -569,6 +570,7 @@
                     app:layout_constraintTop_toTopOf="@id/studentPassedStateIconIv" />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/studentStatePassed"
                     style="@style/medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -585,34 +587,47 @@
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/studentPassedStateValue_ed"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="6dp"
                     android:background="@color/transparent"
                     android:editable="false"
                     android:hint="@string/passedState"
+                    android:minHeight="45dp"
                     android:textColor="@color/hintTextColor"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/studentPassedDegreeFieldTv"
+                    app:layout_constraintEnd_toEndOf="@id/studentStatePassed"
                     app:layout_constraintStart_toStartOf="@id/studentPassedStateFieldTv"
                     app:layout_constraintTop_toBottomOf="@id/studentPassedStateFieldTv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="2dp"
+                android:background="@color/hintTextColor" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/studentPassedDegreeFieldTv"
                     style="@style/regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="6dp"
                     android:gravity="center"
                     android:text="@string/degree"
                     android:textColor="@color/textColorBlack"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="@id/studentPassedStateFieldTv"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/studentPassedStateFieldTv"
-                    app:layout_constraintTop_toTopOf="@id/studentPassedStateFieldTv" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/medium"
@@ -631,6 +646,7 @@
                     android:id="@+id/studentPassedDegreeValue_ed"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
+                    android:layout_marginVertical="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="6dp"
                     android:background="@color/transparent"
@@ -641,7 +657,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/studentPassedDegreeFieldTv"
-                    app:layout_constraintTop_toTopOf="@id/studentPassedStateValue_ed" />
+                    app:layout_constraintTop_toBottomOf="@id/studentPassedDegreeFieldTv" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

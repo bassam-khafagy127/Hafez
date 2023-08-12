@@ -73,7 +73,7 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
             soraCl.setOnClickListener {
                 setSurahName()
             }
-            studentPassedStateValueEd.setOnClickListener {
+            stateCl.setOnClickListener {
                 setState()
             }
 

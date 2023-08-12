@@ -48,21 +48,10 @@
             android:layout_marginVertical="16dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_launcher_foreground"
-            app:layout_constraintBottom_toTopOf="@id/importStudentExcel"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/studentQueryByCode"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fragmentTitle" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/importStudentExcel"
-            style="@style/blueButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_25sdp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="40dp"
-            android:text="@string/importstudentexcel"
-            app:layout_constraintBottom_toTopOf="@id/studentQueryByCode" />
 
 
         <androidx.appcompat.widget.AppCompatButton
@@ -73,7 +62,7 @@
             android:layout_marginHorizontal="@dimen/_25sdp"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="40dp"
-            android:text="@string/studentquerybycode"
+            android:text="@string/student_query_by_code"
             app:layout_constraintBottom_toTopOf="@id/createReview" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -85,17 +74,17 @@
             android:layout_marginTop="40dp"
             android:layout_marginBottom="40dp"
             android:text="@string/create_revision"
-            app:layout_constraintBottom_toTopOf="@id/exportReviewExcel" />
+            app:layout_constraintBottom_toTopOf="@id/importExportReviewExcel" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/exportReviewExcel"
+            android:id="@+id/importExportReviewExcel"
             style="@style/blueButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_25sdp"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="40dp"
-            android:text="@string/export_review_excel"
+            android:text="@string/import_export_review_excel"
             app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

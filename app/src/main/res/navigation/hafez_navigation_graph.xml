@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_homeFragment_to_createSoraCompleteFragment"
             app:destination="@id/createSoraCompleteFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_importExportExcelFragment"
+            app:destination="@id/importExportExcelFragment" />
     </fragment>
     <fragment
         android:id="@+id/createSoraCompleteFragment"
@@ -26,4 +29,9 @@
         android:name="com.bassamkhafagy.hafez.fragments.ShowStudentsByCodeFragment"
         android:label="ShowStudentsByCodeFragment"
         tools:layout="@layout/fragment_show_student_bycode" />
+    <fragment
+        tools:layout="@layout/fragment_import_export_excel"
+        android:id="@+id/importExportExcelFragment"
+        android:name="com.bassamkhafagy.hafez.fragments.ImportExportExcelFragment"
+        android:label="ImportExportExcelFragment" />
 </navigation>

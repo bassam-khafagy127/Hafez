@@ -65,6 +65,10 @@ class HafezViewModel @Inject constructor(private val repository: HafezRepository
         }
     }
 
+    fun setUiState(state: Resource<String>) {
+        _uiStateLiveDate.postValue(state)
+    }
+
 
     suspend fun insertAllImportedDate(importedData: List<ImportedData>) {
         repository.insertAllImportedData(importedData)

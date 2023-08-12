@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/nameEd"
+            style="@style/regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:background="@drawable/cardview8radious_bg"
+            android:elevation="5dp"
+            android:hint="@string/please_enter_your_name"
+            android:minHeight="45dp"
+            android:paddingHorizontal="8dp"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="32dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/exportData_btn"
+            style="@style/blueButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_25sdp"
+            android:layout_marginTop="40dp"
+            android:text="@string/export_review_s"
+            app:layout_constraintTop_toBottomOf="@id/nameEd"
+            tools:layout_editor_absoluteX="32dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/importDataExcel"
+            style="@style/blueButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_25sdp"
+            android:layout_marginVertical="32dp"
+            android:text="@string/import_Data_Excel"
+            app:layout_constraintTop_toBottomOf="@+id/exportData_btn"
+            tools:layout_editor_absoluteX="32dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

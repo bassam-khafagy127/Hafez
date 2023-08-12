@@ -24,21 +24,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private lateinit var binding: FragmentHomeBinding
 
-    // Set up the file picker contract
-    private val studentFilePickerContract =
-        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-            uri?.let {
-                val inputStream = requireContext().contentResolver.openInputStream(it)
-                inputStream?.let { stream ->
-                    lifecycleScope.launch(Dispatchers.IO) {
-                        viewModel.clearAllImportedData()
-                        viewModel.insertAllImportedDate(parseImportedStudentsExcelFile(stream))
-                        stream.close()
-                    }
-
-                }
-            }
-        }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,8 +41,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun setUpCallBacks(view: View) {
         binding.apply {
-            importStudentExcel.setOnClickListener {
-                selectExcelFile()
+            importExportReviewExcel.setOnClickListener {
+                val action =
+                    HomeFragmentDirections.actionHomeFragmentToImportExportExcelFragment()
+                Navigation.findNavController(view).navigate(action)
             }
 
             createReview.setOnClickListener {
@@ -70,19 +57,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     HomeFragmentDirections.actionHomeFragmentToShowStudentsByCodeFragment()
                 Navigation.findNavController(view).navigate(action)
             }
-            exportReviewExcel.setOnClickListener {
 
-                lifecycleScope.launch(Dispatchers.IO) {
-                    val allReviews = viewModel.getAllSoraReviews()
-                    exportSoraReviews(allReviews, "exported")
-                }
-            }
         }
     }
 
-    private fun selectExcelFile() {
-        lifecycleScope.launch(Dispatchers.IO) {
-            studentFilePickerContract.launch("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-        }
-    }
+
 }

@@ -16,13 +16,16 @@
     <string name="ok">حسنا</string>
     <string name="Passed">منقول</string>
     <string name="Faild">إعادة</string>
-    <string name="importstudentexcel">إستيراد ملف الطلاب</string>
-    <string name="studentquerybycode">إستعلام عن طالب بالكود</string>
+    <string name="import_Data_Excel">إستيراد ملف الطلاب</string>
+    <string name="student_query_by_code">إستعلام عن طالب بالكود</string>
     <string name="export_review_excel">تصدير ملف المراجعات</string>
     <string name="cantBeEmpty">لا يمكن ان يترك فارغا!!</string>
     <string name="choseSheikh">إختر شيخ</string>
     <string name="choseSurah">إختر سورة</string>
     <string name="isNotFounded">" ليس موجودا"</string>
+    <string name="import_export_review_excel">استيراد وتصدير اكسل</string>
+    <string name="export_review_s">تصدير المراجعات</string>
+    <string name="please_enter_your_name">Please enter your name</string>
     <string-array name="quranArray">
         <item>الفاتحة</item>
         <item>البقرة</item>
