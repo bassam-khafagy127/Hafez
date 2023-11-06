@@ -27,6 +27,14 @@
     <string name="export_review_s">تصدير المراجعات</string>
     <string name="please_enter_your_name">من فضلك أدخل إسمك</string>
     <string name="data_imported_successfully">تم استيراد البيانات بنجاح</string>
+
+    <string name="studentWarning">لا يمكن أن يكون حقل رمز الطالب فارغًا!!</string>
+    <string name="shikhWarning">لا يمكن أن يكون حقل الشيخ فارغًا!!</string>
+    <string name="ringWarning">لا يمكن أن يكون حقل الحلقة فارغًا!!</string>
+    <string name="soraWarning">لا يمكن أن يكون حقل السورة فارغاً!!</string>
+    <string name="stateWarning">لا يمكن أن يكون حقل الحالة فارغًا!!</string>
+    <string name="degreeWarning">الدرجة لا يمكن أن تكون أكثر من 100 أو أقل من 0!!</string>
+
     <string-array name="quranArray">
         <item>الفاتحة</item>
         <item>البقرة</item>

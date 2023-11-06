@@ -8,7 +8,7 @@
     <string name="student_code">Student Code</string>
     <string name="studentName">Student Name</string>
     <string name="ring">Ring</string>
-    <string name="shiekh">Shiekh</string>
+    <string name="shiekh">Sheikh</string>
     <string name="date">Date</string>
     <string name="sora">Sora</string>
     <string name="passedState">State</string>
@@ -27,6 +27,13 @@
     <string name="export_review_s">Export review\'s</string>
     <string name="please_enter_your_name">Please enter your name</string>
     <string name="data_imported_successfully">Data imported successfully</string>
+
+    <string name="studentWarning">Student code field cannot be empty!!</string>
+    <string name="shikhWarning">Sheikh name field cannot be empty!!</string>
+    <string name="ringWarning">Ring field cannot be empty!!</string>
+    <string name="soraWarning">Sora field cannot be empty!!</string>
+    <string name="stateWarning">State field cannot be empty!!</string>
+    <string name="degreeWarning">Degree cannot be more the 100 or less than 0!!</string>
 
     <string-array name="quranArray">
         <item>الفاتحة</item>
