@@ -46,7 +46,7 @@ fun exportSoraReviews(reviews: List<SoraReview>, fileName: String) {
     val documentFolder =
         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)
     // Create a new file with the given file name
-    val file = File(documentFolder, fileName + ".xlsx")
+    val file = File(documentFolder, "$fileName.xlsx")
     // Write the workbook to the file
     val outputStream = FileOutputStream(file)
     workbook.write(outputStream)
