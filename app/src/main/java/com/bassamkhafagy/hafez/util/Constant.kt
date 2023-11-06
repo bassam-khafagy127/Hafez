@@ -15,15 +15,22 @@ object Constant {
         const val STUDENT_PAYING_STATE = 5
     }
 
+//    object ReviewExcel {
+//        const val REVIEW_DATE = 0
+//        const val REVIEW_STUDENT_CODE = 1
+//        const val REVIEW_STUDENT_NAME_CODE = 2
+//        const val REVIEW_STUDENT_RING_CODE = 3
+//        const val REVIEW_Sheikh_CODE = 4
+//        const val REVIEW_SURAH_TITLE_CODE = 5
+//        const val REVIEW_STATE = 6
+//        const val REVIEW_DEGREE = 7
+//    }
     object ReviewExcel {
         const val REVIEW_DATE = 0
         const val REVIEW_STUDENT_CODE = 1
-        const val REVIEW_STUDENT_NAME_CODE = 2
-        const val REVIEW_STUDENT_RING_CODE = 3
-        const val REVIEW_Sheikh_CODE = 4
-        const val REVIEW_SURAH_TITLE_CODE = 5
-        const val REVIEW_STATE = 6
-        const val REVIEW_DEGREE = 7
+        const val REVIEW_SURAH_TITLE_CODE = 2
+        const val REVIEW_STATE = 3
+        const val REVIEW_DEGREE = 4
     }
 
 }
