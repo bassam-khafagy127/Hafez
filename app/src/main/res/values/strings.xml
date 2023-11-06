@@ -27,6 +27,7 @@
     <string name="export_review_s">Export review\'s</string>
     <string name="please_enter_your_name">Please enter your name</string>
     <string name="data_imported_successfully">Data imported successfully</string>
+    <string name="showStudentsData">Show Student\'s data</string>
 
     <string name="studentWarning">Student code field cannot be empty!!</string>
     <string name="shikhWarning">Sheikh name field cannot be empty!!</string>

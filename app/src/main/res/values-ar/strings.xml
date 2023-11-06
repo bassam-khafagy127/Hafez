@@ -27,6 +27,7 @@
     <string name="export_review_s">تصدير المراجعات</string>
     <string name="please_enter_your_name">من فضلك أدخل إسمك</string>
     <string name="data_imported_successfully">تم استيراد البيانات بنجاح</string>
+    <string name="showStudentsData">عرض بيانات الطلاب</string>
 
     <string name="studentWarning">لا يمكن أن يكون حقل رمز الطالب فارغًا!!</string>
     <string name="shikhWarning">لا يمكن أن يكون حقل الشيخ فارغًا!!</string>

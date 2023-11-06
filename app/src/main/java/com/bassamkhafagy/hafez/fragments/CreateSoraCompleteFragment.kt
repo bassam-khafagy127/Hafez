@@ -94,7 +94,7 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
     }
 
     private fun reviewSave(view: View) {
-        when (val validation = checkReview(reviewComposition())) {
+        when (val validation = checkReview(reviewComposition(),requireContext())) {
 
             is RegisterValidation.Failed -> {
                 Snackbar.make(requireContext(), view, validation.message, Snackbar.LENGTH_LONG)
