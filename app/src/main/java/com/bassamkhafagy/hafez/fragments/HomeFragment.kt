@@ -59,7 +59,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
 
             showAllReview.setOnClickListener {
-
+                val action =
+                    HomeFragmentDirections.actionHomeFragmentToShowAllStudentsDataFragment()
+                Navigation.findNavController(view).navigate(action)
             }
         }
     }

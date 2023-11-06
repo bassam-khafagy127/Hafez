@@ -25,8 +25,8 @@ fun parseImportedStudentsExcelFile(inputStream: InputStream): List<ImportedData>
             val sheikhName =
                 row.getCell(Constant.StudentExcel.STUDENT_SHEIKH_NAME).stringCellValue
 
-//        val phoneNumber =
-//            row.getCell(Constant.StudentExcel.STUDENT_PHONE_NUMBER).stringCellValue
+        val phoneNumber =
+            row.getCell(Constant.StudentExcel.STUDENT_PHONE_NUMBER).stringCellValue
 
             val payState =
                 row.getCell(Constant.StudentExcel.STUDENT_PAYING_STATE).stringCellValue
@@ -39,7 +39,7 @@ fun parseImportedStudentsExcelFile(inputStream: InputStream): List<ImportedData>
                     studentName,
                     ring,
                     sheikhName,
-                    null,
+                    phoneNumber,
                     payState
                 )
 

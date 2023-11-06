@@ -33,10 +33,9 @@
             android:id="@+id/fragmentTaskTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="4dp"
             android:background="@color/transparent"
-            android:src="@drawable/ic_arrow_back"
-            android:text="Student by code"
+            android:text="@string/student_by_code"
             android:textAppearance="@style/medium"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -115,7 +114,7 @@
             android:background="@color/transparent"
             android:minHeight="30dp"
             android:paddingHorizontal="6dp"
-            android:text="Student name should appear hear"
+            android:text="@string/student_name_should_appear_hear"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/studentName_iv"
             app:layout_constraintEnd_toEndOf="parent"
@@ -189,13 +188,12 @@
             android:background="@color/transparent"
             android:minHeight="30dp"
             android:paddingHorizontal="6dp"
-            android:text="t5"
+            android:text="@string/ring"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/ring_iv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ring_iv"
-            app:layout_constraintTop_toTopOf="@id/ring_iv"
-            tools:text="t5" />
+            app:layout_constraintTop_toTopOf="@id/ring_iv" />
 
         <View
             android:id="@+id/splitRingNameFromPayingState"
@@ -226,13 +224,12 @@
             android:background="@color/transparent"
             android:minHeight="30dp"
             android:paddingHorizontal="6dp"
-            android:text="Pay"
+            android:text="@string/passedState"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/payingState_iv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/payingState_iv"
-            app:layout_constraintTop_toTopOf="@id/payingState_iv"
-            tools:text="Pay" />
+            app:layout_constraintTop_toTopOf="@id/payingState_iv" />
 
         <View
             android:id="@+id/splitPayingStateFromPhoneNumber"
@@ -249,7 +246,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
-            android:src="@drawable/ic_shiek_profile"
+            android:src="@drawable/ic_call"
             app:layout_constraintStart_toStartOf="@id/back_btn"
             app:layout_constraintTop_toBottomOf="@id/splitPayingStateFromPhoneNumber" />
 
@@ -263,14 +260,23 @@
             android:background="@color/transparent"
             android:minHeight="30dp"
             android:paddingHorizontal="6dp"
-            android:text="+201025431379"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/phoneNumber_iv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/phoneNumber_iv"
             app:layout_constraintTop_toTopOf="@id/phoneNumber_iv"
-            tools:text="+201025431379" />
+            android:text="@string/phone_number" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/showStudentData"
+            style="@style/blueButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_25sdp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="40dp"
+            android:text="@string/search_forStudent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

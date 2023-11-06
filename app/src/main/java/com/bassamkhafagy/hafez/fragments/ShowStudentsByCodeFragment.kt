@@ -43,7 +43,12 @@ class ShowStudentsByCodeFragment : Fragment(R.layout.fragment_show_student_bycod
 
     private fun setUpCallbacks() {
         binding.apply {
-            binding.searchIv.setOnClickListener {
+           searchIv.setOnClickListener {
+                val studentCode = searchEd.text?.trim().toString()
+                getStudentByCode(studentCode)
+            }
+
+            showStudentData.setOnClickListener {
                 val studentCode = searchEd.text?.trim().toString()
                 getStudentByCode(studentCode)
             }
@@ -82,7 +87,7 @@ class ShowStudentsByCodeFragment : Fragment(R.layout.fragment_show_student_bycod
 
     private fun observeStudentData() {
         viewModel.studentLiveDate.observe(viewLifecycleOwner) {
-            Log.d("ShowStudentData", it.studentsName.toString())
+            Log.d("ShowStudentData", it.phoneNumber.toString())
             binding.apply {
                 studentNameTv.text = it.studentsName
                 ringTv.text = it.ring

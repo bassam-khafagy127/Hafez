@@ -12,6 +12,7 @@
     <string name="date">التاريخ</string>
     <string name="sora">سورة</string>
     <string name="passedState">الحالة</string>
+    <string name="pay">حالة الدفع</string>
     <string name="degree">الدرجة</string>
     <string name="ok">حسنا</string>
     <string name="Passed">منقول</string>
@@ -35,6 +36,10 @@
     <string name="soraWarning">لا يمكن أن يكون حقل السورة فارغاً!!</string>
     <string name="stateWarning">لا يمكن أن يكون حقل الحالة فارغًا!!</string>
     <string name="degreeWarning">الدرجة لا يمكن أن تكون أكثر من 100 أو أقل من 0!!</string>
+    <string name="phone_number">رقم الهاتف</string>
+    <string name="student_name_should_appear_hear">اسم الطالب يظهر هنا</string>
+    <string name="student_by_code">الطالب بالرمز</string>
+    <string name="search_forStudent">ابحث عن طالب</string>
 
     <string-array name="quranArray">
         <item>الفاتحة</item>

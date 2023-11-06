@@ -3,7 +3,7 @@
 
     <style name="medium">
         <item name="android:fontFamily">@font/poppins_medium</item>
-        <item name="android:textColor">@color/textColorBlack</item>
+        <item name="android:textColor">@color/darkBlue</item>
     </style>
 
     <style name="strong">

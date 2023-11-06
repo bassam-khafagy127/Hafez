@@ -12,6 +12,7 @@
     <string name="date">Date</string>
     <string name="sora">Sora</string>
     <string name="passedState">State</string>
+    <string name="pay">Pay</string>
     <string name="degree">Degree</string>
     <string name="ok">OK</string>
     <string name="Passed">منقول</string>
@@ -35,6 +36,10 @@
     <string name="soraWarning">Sora field cannot be empty!!</string>
     <string name="stateWarning">State field cannot be empty!!</string>
     <string name="degreeWarning">Degree cannot be more the 100 or less than 0!!</string>
+    <string name="phone_number">phone Number</string>
+    <string name="student_name_should_appear_hear">Student name should appear hear</string>
+    <string name="student_by_code">Student by code</string>
+    <string name="search_forStudent">Search for Student</string>
 
     <string-array name="quranArray">
         <item>الفاتحة</item>
