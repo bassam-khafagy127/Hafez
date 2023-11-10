@@ -22,6 +22,7 @@ class HafezRepository @Inject constructor(private val hafezAppDataBase: HafezApp
 
     suspend fun getStudentNameByCode(studentCode: Long) =
         hafezAppDataBase.importedStudentsDao().getStudentNameByCode(studentCode)
+
     suspend fun getStudentDataByCode(studentCode: Long) =
         hafezAppDataBase.importedStudentsDao().getStudentDataByCodeData(studentCode)
 
@@ -39,5 +40,5 @@ class HafezRepository @Inject constructor(private val hafezAppDataBase: HafezApp
     suspend fun getAllReviews() =
         hafezAppDataBase.soraReviewDao().getAllSorReview()
 
-
+    suspend fun getAllStudentData() = hafezAppDataBase.importedStudentsDao().getAllImportedData()
 }

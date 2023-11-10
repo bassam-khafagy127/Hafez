@@ -1,5 +1,8 @@
 package com.bassamkhafagy.hafez.viewModel
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,6 +10,7 @@ import androidx.lifecycle.viewModelScope
 import com.bassamkhafagy.hafez.data.local.ImportedData
 import com.bassamkhafagy.hafez.data.local.SoraReview
 import com.bassamkhafagy.hafez.data.local.Student
+import com.bassamkhafagy.hafez.fragments.showallstudent.compose.StudentUIState
 import com.bassamkhafagy.hafez.repositories.HafezRepository
 import com.bassamkhafagy.hafez.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,6 +20,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HafezViewModel @Inject constructor(private val repository: HafezRepository) : ViewModel() {
+
+    //all data show
+    private val _studentsUiState: MutableState<StudentUIState> =
+        mutableStateOf(
+            StudentUIState.Loading
+        )
+    val studentsUiState: State<StudentUIState> = _studentsUiState
+
 
     //uiInterAction
     private val _uiStateLiveDate = MutableLiveData<Resource<String>>()
@@ -105,6 +117,10 @@ class HafezViewModel @Inject constructor(private val repository: HafezRepository
 
         } else _uiStateLiveDate.postValue(Resource.Error(""))
 
+    }
+
+    suspend fun getAllStudent() {
+        _studentsUiState.value = StudentUIState.Success(repository.getAllStudentData())
     }
 }
 
