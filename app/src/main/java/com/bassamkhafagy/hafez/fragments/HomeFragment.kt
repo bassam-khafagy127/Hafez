@@ -20,11 +20,7 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
-    private val viewModel by viewModels<HafezViewModel>()
-
     private lateinit var binding: FragmentHomeBinding
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -62,6 +58,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 val action =
                     HomeFragmentDirections.actionHomeFragmentToShowAllStudentsDataFragment()
                 Navigation.findNavController(view).navigate(action)
+            }
+            backBtn.setOnClickListener {
+                requireActivity().finish()
             }
         }
     }

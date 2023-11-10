@@ -30,18 +30,18 @@ fun ShowAllStudentsDataContent(studentUIState: StudentUIState) {
             }
 
             is StudentUIState.Success -> {
-                LazyColumn(contentPadding = PaddingValues(horizontal = 6.dp)) {
+                LazyColumn() {
                     stickyHeader {
                         StudentListHeader()
                     }
-                    item { Spacer(modifier = Modifier.height(32.dp)) }
-
                     itemsIndexed(studentUIState.students) { index: Int, student: ImportedData ->
+                       Spacer(modifier = Modifier.height(8.dp))
                         StudentItem(
                             studentName = student.studentsName.toString(),
                             shiehkName = student.sheikhName.toString(),
                             ring = student.ring.toString()
                         )
+                        Spacer(modifier = Modifier.height(8.dp))
                     }
                 }
             }

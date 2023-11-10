@@ -1,7 +1,6 @@
 package com.bassamkhafagy.hafez.fragments.showallstudent.compose
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,8 +15,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bassamkhafagy.hafez.R
-import com.bassamkhafagy.hafez.atoms.DarkColorSurface
-import com.bassamkhafagy.hafez.atoms.LightColorSurface
+import com.bassamkhafagy.hafez.atoms.LightColorBackground
+import com.bassamkhafagy.hafez.atoms.LightColorOnBackground
 
 @Composable
 fun StudentListHeader() {
@@ -26,14 +25,14 @@ fun StudentListHeader() {
             R.string.studentName,
             modifier = Modifier
                 .weight(1f)
-                .background(LightColorSurface)
+                .background(LightColorBackground)
                 .padding(horizontal = 4.dp, vertical = 4.dp)
         )
         BoxHeader(
             R.string.shiekh,
             modifier = Modifier
                 .weight(1f)
-                .background(LightColorSurface)
+                .background(LightColorBackground)
                 .padding(start = 4.dp, top = 4.dp, bottom = 4.dp)
 
         )
@@ -42,7 +41,7 @@ fun StudentListHeader() {
             R.string.ring,
             modifier = Modifier
                 .weight(1f)
-                .background(LightColorSurface)
+                .background(LightColorBackground)
                 .padding(horizontal = 4.dp, vertical = 4.dp)
         )
 
@@ -63,7 +62,7 @@ fun BoxHeader(
             style = MaterialTheme.typography.body1.copy(
                 fontWeight = FontWeight.Bold,
                 fontSize = 16.sp,
-                color = DarkColorSurface
+                color = LightColorOnBackground
             )
         )
     }

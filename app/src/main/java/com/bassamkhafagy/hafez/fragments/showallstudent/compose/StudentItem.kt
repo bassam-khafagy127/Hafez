@@ -1,7 +1,6 @@
 package com.bassamkhafagy.hafez.fragments.showallstudent.compose
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -13,14 +12,12 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.bassamkhafagy.hafez.atoms.DarkColorSurface
-import com.bassamkhafagy.hafez.atoms.LightColorSurface
+import com.bassamkhafagy.hafez.atoms.LightColorBackground
+import com.bassamkhafagy.hafez.atoms.LightColorOnBackground
 
 @Composable
 fun StudentItem(studentName: String, shiehkName: String, ring: String) {
@@ -29,19 +26,19 @@ fun StudentItem(studentName: String, shiehkName: String, ring: String) {
             title = studentName,
             Modifier
                 .weight(1f)
-                .background(LightColorSurface)
+                .background(LightColorBackground)
                 .padding(start = 4.dp, top = 4.dp, bottom = 4.dp)
         )
         StudentItemBox(
             title = shiehkName, Modifier
                 .weight(1f)
-                .background(LightColorSurface)
+                .background(LightColorBackground)
                 .padding(start = 4.dp, top = 4.dp, bottom = 4.dp)
         )
         StudentItemBox(
             title = ring, Modifier
                 .weight(1f)
-                .background(LightColorSurface)
+                .background(LightColorBackground)
                 .padding(start = 4.dp, top = 4.dp, bottom = 4.dp)
         )
         Spacer(modifier = Modifier.height(32.dp))
@@ -61,7 +58,7 @@ fun StudentItemBox(title: String, modifier: Modifier) {
             style = MaterialTheme.typography.body1.copy(
                 fontWeight = FontWeight.Bold,
                 fontSize = 12.sp,
-                color = DarkColorSurface, textAlign = TextAlign.Center
+                color = LightColorOnBackground, textAlign = TextAlign.Center
             )
         )
     }
