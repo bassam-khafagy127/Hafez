@@ -1,5 +1,6 @@
 package com.bassamkhafagy.hafez.fragments.showallstudent.compose
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -16,24 +17,44 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bassamkhafagy.hafez.R
 import com.bassamkhafagy.hafez.atoms.DarkColorSurface
+import com.bassamkhafagy.hafez.atoms.LightColorSurface
 
 @Composable
 fun StudentListHeader() {
     Row(Modifier.fillMaxWidth()) {
-        BoxHeader(R.string.studentName)
+        BoxHeader(
+            R.string.studentName,
+            modifier = Modifier
+                .weight(1f)
+                .background(LightColorSurface)
+                .padding(horizontal = 4.dp, vertical = 4.dp)
+        )
+        BoxHeader(
+            R.string.shiekh,
+            modifier = Modifier
+                .weight(1f)
+                .background(LightColorSurface)
+                .padding(start = 4.dp, top = 4.dp, bottom = 4.dp)
 
-        BoxHeader(R.string.ring)
+        )
 
-        BoxHeader(R.string.shiekh)
+        BoxHeader(
+            R.string.ring,
+            modifier = Modifier
+                .weight(1f)
+                .background(LightColorSurface)
+                .padding(horizontal = 4.dp, vertical = 4.dp)
+        )
+
     }
 }
 
 @Composable
-fun BoxHeader(id: Int) {
+fun BoxHeader(
+    id: Int, modifier: Modifier = Modifier
+) {
     Box(
-        modifier = Modifier
-            .border(2.dp, DarkColorSurface)
-            .padding(horizontal = 4.dp, vertical = 4.dp),
+        modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
 
@@ -41,7 +62,7 @@ fun BoxHeader(id: Int) {
             text = stringResource(id = id),
             style = MaterialTheme.typography.body1.copy(
                 fontWeight = FontWeight.Bold,
-                fontSize = 12.sp,
+                fontSize = 16.sp,
                 color = DarkColorSurface
             )
         )
