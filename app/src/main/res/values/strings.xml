@@ -7,12 +7,15 @@
     <string name="required">required</string>
     <string name="student_code">Student Code</string>
     <string name="studentName">Student Name</string>
+    <string name="shiekhtName">Sheikh Name</string>
     <string name="ring">Ring</string>
     <string name="shiekh">Sheikh</string>
     <string name="date">Date</string>
     <string name="sora">Sora</string>
     <string name="exported">Exported</string>
     <string name="imported">Imported</string>
+    <string name="confirmationMessage">Are You Sure Exporting reviews File</string>
+    <string name="cancel">Cancel</string>
     <string name="passedState">State</string>
     <string name="pay">Pay</string>
     <string name="degree">Degree</string>
@@ -30,6 +33,7 @@
     <string name="export_review_s">Export review\'s</string>
     <string name="please_enter_your_name">Please enter your name</string>
     <string name="data_imported_successfully">Data imported successfully</string>
+    <string name="data_exported_successfully">Data Exported successfully</string>
     <string name="showStudentsData">Show Student\'s data</string>
 
     <string name="studentWarning">Student code field cannot be empty!!</string>

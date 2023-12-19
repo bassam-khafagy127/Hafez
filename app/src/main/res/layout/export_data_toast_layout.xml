@@ -26,7 +26,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:text="DataExportedSuccessfully"
+        android:text="@string/data_exported_successfully"
         android:textColor="@color/hintTextColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

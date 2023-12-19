@@ -8,11 +8,14 @@
     <string name="student_code">كود الطالب</string>
     <string name="studentName">إسم الطالب</string>
     <string name="ring">الحلقة</string>
+    <string name="shiekhtName">إسم الشيخ</string>
     <string name="shiekh">الشيخ</string>
     <string name="date">التاريخ</string>
     <string name="sora">السورة</string>
     <string name="exported">صدر</string>
     <string name="imported">إستلم</string>
+    <string name="confirmationMessage">هل انت متأكد من تصدير ملف المراجعات</string>
+    <string name="cancel">إلغاء</string>
     <string name="passedState">الحالة</string>
     <string name="pay">حالة الدفع</string>
     <string name="degree">الدرجة</string>
@@ -30,6 +33,7 @@
     <string name="export_review_s">تصدير المراجعات</string>
     <string name="please_enter_your_name">من فضلك أدخل إسمك</string>
     <string name="data_imported_successfully">تم استيراد البيانات بنجاح</string>
+    <string name="data_exported_successfully">تم تصدير البيانات بنجاح</string>
     <string name="showStudentsData">عرض بيانات الطلاب</string>
 
     <string name="studentWarning">لا يمكن أن يكون حقل رمز الطالب فارغًا!!</string>

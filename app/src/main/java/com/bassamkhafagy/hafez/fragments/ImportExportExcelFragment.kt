@@ -1,11 +1,14 @@
 package com.bassamkhafagy.hafez.fragments
 
+import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -68,7 +71,15 @@ class ImportExportExcelFragment : Fragment(R.layout.fragment_import_export_excel
         binding.apply {
             exportDataBtn.setOnClickListener {
                 val name = nameEd.text.toString()
-                confirmationDialog { exportData(name) }
+                if (name.isNotEmpty() && name.length > 2) {
+                    confirmationDialog { exportData(name) }
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.shiekhtName) + " " + getString(R.string.cantBeEmpty),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
             importDataExcel.setOnClickListener {
                 selectExcelFile()
@@ -79,7 +90,17 @@ class ImportExportExcelFragment : Fragment(R.layout.fragment_import_export_excel
     }
 
     private fun confirmationDialog(exportData: () -> Unit) {
-
+        val alertDialog = AlertDialog.Builder(requireContext())
+        alertDialog.setTitle(getString(R.string.confirmationMessage))
+        alertDialog.setPositiveButton(
+            getString(R.string.ok)
+        ) { p0, p1 ->
+            exportData.invoke()
+        }
+        alertDialog.setNegativeButton(getString(R.string.cancel)) { p0, p1 ->
+            p0.dismiss()
+        }
+        alertDialog.show()
     }
 
     private fun observeUiStateLiveData() {
@@ -104,18 +125,8 @@ class ImportExportExcelFragment : Fragment(R.layout.fragment_import_export_excel
     private fun exportData(name: String) {
         lifecycleScope.launch(Dispatchers.IO) {
             val allReviews = viewModel.getAllSoraReviews()
-            if (name.isNotEmpty() && name.length > 2) {
-                exportSoraReviews(allReviews, name)
-                viewModel.setUiState(Resource.Success(getString(R.string.exported)))
-            } else {
-                withContext(Dispatchers.Main) {
-                    Toast.makeText(
-                        requireContext(),
-                        getString(R.string.cantBeEmpty),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
+            exportSoraReviews(allReviews, name)
+            viewModel.setUiState(Resource.Success(getString(R.string.exported)))
         }
 
     }
