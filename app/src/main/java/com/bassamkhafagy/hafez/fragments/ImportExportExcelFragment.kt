@@ -68,7 +68,7 @@ class ImportExportExcelFragment : Fragment(R.layout.fragment_import_export_excel
         binding.apply {
             exportDataBtn.setOnClickListener {
                 val name = nameEd.text.toString()
-                exportData(name)
+                confirmationDialog { exportData(name) }
             }
             importDataExcel.setOnClickListener {
                 selectExcelFile()
@@ -76,6 +76,10 @@ class ImportExportExcelFragment : Fragment(R.layout.fragment_import_export_excel
 
         }
 
+    }
+
+    private fun confirmationDialog(exportData: () -> Unit) {
+        TODO("Not yet implemented")
     }
 
     private fun observeUiStateLiveData() {
@@ -105,7 +109,11 @@ class ImportExportExcelFragment : Fragment(R.layout.fragment_import_export_excel
                 viewModel.setUiState(Resource.Success("Exported"))
             } else {
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(requireContext(), "Can't be empty", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.cantBeEmpty),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
