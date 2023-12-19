@@ -59,6 +59,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     HomeFragmentDirections.actionHomeFragmentToShowAllStudentsDataFragment()
                 Navigation.findNavController(view).navigate(action)
             }
+            fragmentTitle.setOnClickListener {
+                requireActivity().finish()
+            }
 //            backBtn.setOnClickListener {
 //                requireActivity().finish()
 //            }
