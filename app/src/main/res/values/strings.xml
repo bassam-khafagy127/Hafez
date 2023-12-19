@@ -3,7 +3,7 @@
     <string name="app_name">Hafez</string>
     <string name="sora_inserted_successfully">The review has been entered \nsuccessfully</string>
     <string name="exit">Exit</string>
-    <string name="create_revision">Create Review</string>
+    <string name="create_revision">Receive Sora Review and Save Data</string>
     <string name="required">required</string>
     <string name="student_code">Student Code</string>
     <string name="studentName">Student Name</string>
