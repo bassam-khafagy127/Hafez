@@ -40,7 +40,7 @@ class ImportExportExcelFragment : Fragment(R.layout.fragment_import_export_excel
                         viewModel.clearAllImportedData()
                         viewModel.insertAllImportedDate(parseImportedStudentsExcelFile(stream))
                         stream.close()
-                        viewModel.setUiState(Resource.Success("Import"))
+                        viewModel.setUiState(Resource.Success(getString(R.string.imported)))
                         delay(10)
                         viewModel.setUiState(Resource.Unspecified())
                     }
@@ -88,10 +88,10 @@ class ImportExportExcelFragment : Fragment(R.layout.fragment_import_export_excel
                 is Resource.Loading -> {}
                 is Resource.Error -> {}
                 is Resource.Success -> {
-                    if (state.data == "Import") {
+                    if (state.data == getString(R.string.imported)) {
                         showImportDataSuccessToast(requireContext())
                     }
-                    if (state.data == "Exported") {
+                    if (state.data == getString(R.string.exported)) {
                         showExportDataSuccessToast(requireContext())
                     }
                 }
@@ -106,7 +106,7 @@ class ImportExportExcelFragment : Fragment(R.layout.fragment_import_export_excel
             val allReviews = viewModel.getAllSoraReviews()
             if (name.isNotEmpty() && name.length > 2) {
                 exportSoraReviews(allReviews, name)
-                viewModel.setUiState(Resource.Success("Exported"))
+                viewModel.setUiState(Resource.Success(getString(R.string.exported)))
             } else {
                 withContext(Dispatchers.Main) {
                     Toast.makeText(

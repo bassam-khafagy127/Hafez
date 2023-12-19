@@ -11,6 +11,8 @@
     <string name="shiekh">Sheikh</string>
     <string name="date">Date</string>
     <string name="sora">Sora</string>
+    <string name="exported">Exported</string>
+    <string name="imported">Imported</string>
     <string name="passedState">State</string>
     <string name="pay">Pay</string>
     <string name="degree">Degree</string>
