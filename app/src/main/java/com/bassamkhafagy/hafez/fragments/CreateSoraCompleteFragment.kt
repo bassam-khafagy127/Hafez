@@ -52,14 +52,14 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
     private fun setUpUi() {
         binding.apply {
             dateFieldShowTv.text = getSystemDate()
-            sheikhCl.isEnabled = false
-            ringValueEd.isEnabled = false
+//            sheikhCl.isEnabled = false
+//            ringValueEd.isEnabled = false
         }
     }
 
     private fun observeUiData() {
         observeSurahLiveData()
-        observeSheikhLiveData()
+//        observeSheikhLiveData()
         observeStateLiveData()
         observeStudentLiveData()
         observeUiStateLiveData()
@@ -119,8 +119,8 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
         val studentCode = binding.studentCodeValueEd.text.toString()
         val date = binding.dateFieldShowTv.text.toString()
         val studentName = binding.studentNameValueEd.text.toString()
-        val ring = binding.ringValueEd.text.toString()
-        val sheikhName = binding.sheikhTvUser.text.toString()
+//        val ring = binding.ringValueEd.text.toString()
+//        val sheikhName = binding.sheikhTvUser.text.toString()
         val soraName = binding.soraTvUser.text.toString()
         val state = binding.studentPassedStateValueEd.text.toString()
         val degree = binding.studentPassedDegreeValueEd.text.toString()
@@ -129,8 +129,8 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
             date,
             studentCode,
             studentName,
-            ring,
-            sheikhName,
+//            ring,
+//            sheikhName,
             soraName,
             state,
             degree
@@ -141,8 +141,8 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
     private fun clearFieldData() {
         binding.studentCodeValueEd.setText("")
         binding.studentNameValueEd.setText("")
-        binding.ringValueEd.setText("")
-        binding.sheikhTvUser.setText("")
+//        binding.ringValueEd.setText("")
+//        binding.sheikhTvUser.setText("")
         binding.soraTvUser.setText("")
         binding.studentPassedStateValueEd.setText("")
         binding.studentPassedDegreeValueEd.setText("")
@@ -238,17 +238,17 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
         }
     }
 
-    private fun observeSheikhLiveData() {
-        viewModel.sheikhLiveDate.observe(viewLifecycleOwner) { sheikh ->
-            binding.apply {
-                sheikhTvUser.setText(sheikh)
-
-                sheikhTvUser.visibility = View.VISIBLE
-                sheikhClUser.visibility = View.VISIBLE
-                sheikhIvUser.visibility = View.VISIBLE
-            }
-        }
-    }
+//    private fun observeSheikhLiveData() {
+//        viewModel.sheikhLiveDate.observe(viewLifecycleOwner) { sheikh ->
+//            binding.apply {
+//                sheikhTvUser.setText(sheikh)
+//
+//                sheikhTvUser.visibility = View.VISIBLE
+//                sheikhClUser.visibility = View.VISIBLE
+//                sheikhIvUser.visibility = View.VISIBLE
+//            }
+//        }
+//    }
 
     private fun observeStateLiveData() {
         viewModel.passedStateLiveData.observe(viewLifecycleOwner) { state ->

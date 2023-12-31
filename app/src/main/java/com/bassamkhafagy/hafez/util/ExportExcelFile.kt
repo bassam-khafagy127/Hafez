@@ -1,7 +1,6 @@
 package com.bassamkhafagy.hafez.util
 
 import android.os.Environment
-import android.util.Log
 import com.bassamkhafagy.hafez.data.local.SoraReview
 import com.bassamkhafagy.hafez.util.Constant.ReviewExcel.REVIEW_DATE
 import com.bassamkhafagy.hafez.util.Constant.ReviewExcel.REVIEW_DEGREE
@@ -11,7 +10,6 @@ import com.bassamkhafagy.hafez.util.Constant.ReviewExcel.REVIEW_SURAH_TITLE_CODE
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import java.io.File
 import java.io.FileOutputStream
-import java.io.IOException
 
 fun exportSoraReviews(reviews: List<SoraReview>, fileName: String) {
     try {
@@ -34,31 +32,37 @@ fun exportSoraReviews(reviews: List<SoraReview>, fileName: String) {
             val row = sheet.createRow(index + 1)
             row.createCell(REVIEW_DATE).setCellValue(review.date)
             row.createCell(REVIEW_STUDENT_CODE).setCellValue(review.studentCode)
-
 //        row.createCell(REVIEW_STUDENT_NAME_CODE).setCellValue(review.studentName)
 //        row.createCell(REVIEW_STUDENT_RING_CODE).setCellValue(review.ring)
 //        row.createCell(REVIEW_Sheikh_CODE).setCellValue(review.sheikhName)
-
             row.createCell(REVIEW_SURAH_TITLE_CODE).setCellValue(review.soraName)
             row.createCell(REVIEW_STATE).setCellValue(review.state)
             row.createCell(REVIEW_DEGREE).setCellValue(review.degree)
         }
         // Get the document folder path
-        val hafezFolder = File(Environment.getExternalStorageDirectory(), "Hafez")
-        if (!hafezFolder.exists())
+        val hafezFolder = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),"Hafez")
+
+        if (hafezFolder.exists()) {
+            // Create a new file with the given file name
+            val file = File(hafezFolder, "$fileName.xlsx")
+            // Write the workbook to the file
+            val outputStream = FileOutputStream(file)
+            workbook.write(outputStream)
+            // Close the workbook and the output stream
+            outputStream.close()
+        }else{
             hafezFolder.mkdirs()
-
-        // Create a new file with the given file name
-        val file = File(hafezFolder, "$fileName.xlsx")
-        // Write the workbook to the file
-        val outputStream = FileOutputStream(file)
-        workbook.write(outputStream)
-        // Close the workbook and the output stream
-        outputStream.close()
-    } catch (e: IOException) {
-        Log.e("Exception", e.printStackTrace().toString())
+            // Create a new file with the given file name
+            val file = File(hafezFolder, "$fileName.xlsx")
+            // Write the workbook to the file
+            val outputStream = FileOutputStream(file)
+            workbook.write(outputStream)
+            // Close the workbook and the output stream
+            outputStream.close()
+        }
+    } catch (e: Exception) {
+        // Handle the exception
+        e.printStackTrace() // Or any other exception handling mechanism
     }
-}
 
-//    val documentFolder =
-//        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)
+}
