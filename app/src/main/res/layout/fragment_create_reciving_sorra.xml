@@ -254,11 +254,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/gray_oval"
-                    android:backgroundTint="@color/darkBlue"
+                    android:tint="@color/darkBlue"
                     android:padding="4dp"
                     android:scaleType="center"
-                    android:src="@drawable/ic_profile_white"
+                    android:src="@drawable/ic_two_persons"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -277,18 +276,18 @@
                     app:layout_constraintStart_toEndOf="@id/sheikhIconIv"
                     app:layout_constraintTop_toTopOf="@id/sheikhIconIv" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/medium"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:gravity="bottom"
-                    android:text="@string/required"
-                    android:textColor="@color/babyBlue"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@id/sheikhFieldTv"
-                    app:layout_constraintStart_toEndOf="@id/sheikhFieldTv"
-                    app:layout_constraintTop_toTopOf="@id/sheikhFieldTv" />
+                <!--                <androidx.appcompat.widget.AppCompatTextView-->
+                <!--                    style="@style/medium"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginStart="8dp"-->
+                <!--                    android:gravity="bottom"-->
+                <!--                    android:text="@string/required"-->
+                <!--                    android:textColor="@color/babyBlue"-->
+                <!--                    android:textSize="12sp"-->
+                <!--                    app:layout_constraintBottom_toBottomOf="@id/sheikhFieldTv"-->
+                <!--                    app:layout_constraintStart_toEndOf="@id/sheikhFieldTv"-->
+                <!--                    app:layout_constraintTop_toTopOf="@id/sheikhFieldTv" />-->
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/sheikhValue_ed"
@@ -387,18 +386,18 @@
                     app:layout_constraintTop_toTopOf="@id/ringIconIv" />
 
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/medium"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:gravity="bottom"
-                    android:text="@string/required"
-                    android:textColor="@color/babyBlue"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@id/ringFieldTv"
-                    app:layout_constraintStart_toEndOf="@id/ringFieldTv"
-                    app:layout_constraintTop_toTopOf="@id/ringFieldTv" />
+                <!--                <androidx.appcompat.widget.AppCompatTextView-->
+                <!--                    style="@style/medium"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginStart="8dp"-->
+                <!--                    android:gravity="bottom"-->
+                <!--                    android:text="@string/required"-->
+                <!--                    android:textColor="@color/babyBlue"-->
+                <!--                    android:textSize="12sp"-->
+                <!--                    app:layout_constraintBottom_toBottomOf="@id/ringFieldTv"-->
+                <!--                    app:layout_constraintStart_toEndOf="@id/ringFieldTv"-->
+                <!--                    app:layout_constraintTop_toTopOf="@id/ringFieldTv" />-->
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/ringValue_ed"
