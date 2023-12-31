@@ -68,15 +68,6 @@ class CreateSoraCompleteFragment : Fragment(R.layout.fragment_create_reciving_so
 
     private fun setUpCallBacks(view: View) {
         binding.apply {
-            sheikhCl.setOnClickListener {
-                lifecycleScope.launch(Dispatchers.IO) {
-                    val allSheikh = viewModel.getAllSheikhData()
-                    withContext(Dispatchers.Main) {
-                        setSheikhName(allSheikh)
-                    }
-                }
-
-            }
 
             soraCl.setOnClickListener {
                 setSurahName()
