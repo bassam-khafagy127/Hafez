@@ -68,15 +68,15 @@ fun exportSoraReviews(reviews: List<SoraReview>, fileName: String) {
 }
 
 private fun getHafezDirectory(): File {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
         Log.d("HafezDire", ">=")
-        return File(
+        File(
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),
             "Hafez"
         )
     } else {
         Log.d("HafezDire", "else")
-        return File(
+        File(
             Environment.getExternalStorageDirectory(),
             "Hafez"
         )
